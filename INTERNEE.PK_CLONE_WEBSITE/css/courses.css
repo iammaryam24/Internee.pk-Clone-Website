@@ -1,0 +1,457 @@
+/* Courses Page Styles */
+.courses-hero {
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    padding: 100px 0;
+    text-align: center;
+}
+
+.courses-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.courses-hero p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.courses-search {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.courses-search input {
+    width: 100%;
+    padding: 20px 30px;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    font-family: inherit;
+}
+
+.courses-search input::placeholder {
+    color: var(--text-light);
+    opacity: 0.7;
+}
+
+.courses-categories {
+    padding: 80px 0;
+    background-color: var(--bg-light);
+}
+
+/* HORIZONTAL SINGLE LINE CATEGORY FILTERS WITH ANIMATION */
+.category-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    flex-wrap: nowrap;
+    overflow-x: hidden; /* Changed from auto to hidden for animation control */
+    padding-bottom: 0; /* Remove padding since we removed scrollbar */
+    white-space: nowrap;
+    position: relative;
+}
+
+/* Remove scrollbar completely */
+.category-filters::-webkit-scrollbar {
+    display: none;
+}
+
+.category-filters {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Sliding animation container */
+.category-filters-wrapper {
+    display: flex;
+    gap: 15px;
+    animation: slideFilters 30s linear infinite;
+    padding: 10px 0;
+}
+
+/* Individual filter with bounce animation */
+.category-filter {
+    padding: 12px 25px;
+    background-color: var(--white);
+    border: 2px solid var(--border);
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    min-width: max-content;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center;
+}
+
+/* Hover animation with scale and shadow */
+.category-filter:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
+}
+
+/* Active state with pop animation */
+.category-filter.active {
+    background-color: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+    animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+/* Click animation */
+.category-filter:active {
+    transform: scale(0.95);
+}
+
+/* Continuous sliding animation */
+@keyframes slideFilters {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-100% + 100vw)); /* Adjust based on viewport */
+    }
+}
+
+/* Pop-in animation for active state */
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    70% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Wave effect on hover */
+.category-filter::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(var(--primary-rgb), 0.4);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.category-filter:hover::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+
+/* Pause animation on hover */
+.category-filters:hover .category-filters-wrapper {
+    animation-play-state: paused;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.course-card {
+    background-color: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.course-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.course-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.course-card:hover .course-image img {
+    transform: scale(1.1);
+}
+
+.course-content {
+    padding: 30px;
+}
+
+.course-category {
+    display: inline-block;
+    padding: 6px 15px;
+    background-color: var(--primary-light);
+    color: var(--primary);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.course-title {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+    line-height: 1.4;
+}
+
+.course-description {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.course-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.course-duration,
+.course-level {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.course-duration i,
+.course-level i {
+    color: var(--primary);
+}
+
+.course-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.course-price .free {
+    color: var(--secondary);
+}
+
+.course-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.course-instructor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.instructor-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.instructor-name {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.course-btn {
+    padding: 10px 25px;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.course-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.courses-features {
+    padding: 80px 0;
+    background-color: var(--white);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.feature-card {
+    text-align: center;
+    padding: 40px 30px;
+    background-color: var(--bg-light);
+    border-radius: var(--radius);
+    transition: all 0.3s;
+}
+
+.feature-card:hover {
+    background-color: var(--primary);
+    transform: translateY(-5px);
+}
+
+.feature-card:hover i,
+.feature-card:hover h3,
+.feature-card:hover p {
+    color: var(--white);
+}
+
+.feature-card i {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    transition: color 0.3s;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+    transition: color 0.3s;
+}
+
+.feature-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+    transition: color 0.3s;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .courses-hero h1 {
+        font-size: 2.8rem;
+    }
+    
+    .courses-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .courses-hero h1 {
+        font-size: 2.3rem;
+    }
+    
+    .courses-hero p {
+        font-size: 1.1rem;
+    }
+    
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .course-footer {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+    
+    .course-btn {
+        width: 100%;
+    }
+    
+    /* Updated for sliding animation on mobile */
+    .category-filters {
+        justify-content: flex-start;
+        gap: 10px;
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-bottom: 40px;
+        overflow: hidden;
+    }
+    
+    .category-filters-wrapper {
+        gap: 10px;
+        animation: slideFiltersMobile 25s linear infinite;
+    }
+    
+    .category-filter {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+    
+    @keyframes slideFiltersMobile {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-100% + 100vw));
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .courses-hero {
+        padding: 60px 0;
+    }
+    
+    .courses-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .category-filters {
+        gap: 8px;
+    }
+    
+    .category-filter {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .category-filters-wrapper {
+        animation: slideFiltersMobile 20s linear infinite;
+    }
+}

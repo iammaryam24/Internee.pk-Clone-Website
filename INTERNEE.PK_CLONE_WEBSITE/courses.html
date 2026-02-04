@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - INTERNEE.PK</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/courses.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Add course card styles */
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+        
+        .course-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .course-content {
+            padding: 20px;
+        }
+        
+        .course-category {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #2563eb;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .course-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .course-instructor {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        .instructor-img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .course-duration, .course-level {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+        
+        .course-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #10b981;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .courses-hero {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .courses-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .courses-hero p {
+            font-size: 1.2rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .courses-search {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .courses-search input {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .category-filters {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .category-filter {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .category-filter:hover,
+        .category-filter.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+        
+        @media (max-width: 768px) {
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-filters {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <!-- Logo image -->
+                     <img src="images/logo.png" alt="INTERNEE.PK Logo">
+                    <span>INTERNEE.PK</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="internships.html">Internships</a></li>
+                <li><a href="courses.html" class="active">Courses</a></li>
+                <li><a href="companies.html">Companies</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-login">Login</a>
+                <a href="signup.html" class="btn-signup">Sign Up</a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Courses Hero -->
+    <section class="courses-hero">
+        <div class="container">
+            <h1>Advance Your Career with Expert-Led Courses</h1>
+            <p>Learn in-demand skills from industry experts and boost your career prospects with our comprehensive courses</p>
+            <div class="courses-search">
+                <input type="text" placeholder="Search courses (e.g., Web Development, Data Science, Digital Marketing)">
+            </div>
+        </div>
+    </section>
+
+
+        <!-- Courses Categories -->
+<section class="courses-categories">
+    <div class="container">
+        <h2 class="section-title">Browse by Category</h2>
+        <div class="category-filters">
+            <div class="category-filters-wrapper">
+                <div class="category-filter active">All Courses</div>
+                <div class="category-filter">Web Development</div>
+                <div class="category-filter">Data Science</div>
+                <div class="category-filter">Digital Marketing</div>
+                <div class="category-filter">Mobile Development</div>
+                <div class="category-filter">UI/UX Design</div>
+                <div class="category-filter">Business</div>
+                <!-- Duplicate for seamless loop -->
+                <div class="category-filter">Web Development</div>
+                <div class="category-filter">Data Science</div>
+                <div class="category-filter">Digital Marketing</div>
+                <div class="category-filter">Mobile Development</div>
+                <div class="category-filter">UI/UX Design</div>
+                <div class="category-filter">Business</div>
+            </div>
+        </div>
+        
+
+            
+            <div class="courses-grid" id="coursesGrid">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <img src="images/course1.jpg" 
+                         alt="Full Stack Web Development" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Web Development</span>
+                        <h3 class="course-title">Full Stack Web Development Bootcamp</h3>
+                        <div class="course-instructor">
+                            <img src="images/course2.jpg" 
+                                 alt="Sarah Johnson" class="instructor-img">
+                            <span>Sarah Johnson</span>
+                        </div>
+                        <p>Master HTML, CSS, JavaScript, React, Node.js and build real-world projects from scratch</p>
+                        <div class="course-meta">
+                            <div>
+                                <div class="course-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>12 Weeks</span>
+                                </div>
+                                <div class="course-level">
+                                    <i class="fas fa-signal"></i>
+                                    <span>Beginner to Advanced</span>
+                                </div>
+                            </div>
+                            <div class="course-price">$199</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <img src="images/course2.jpg" 
+                         alt="Data Science" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Data Science</span>
+                        <h3 class="course-title">Data Science & Machine Learning</h3>
+                        <div class="course-instructor">
+                            <img src="images/course4.jpg" 
+                                 alt="Michael Chen" class="instructor-img">
+                            <span>Michael Chen</span>
+                        </div>
+                        <p>Learn Python, pandas, numpy, scikit-learn, and build ML models for real-world problems</p>
+                        <div class="course-meta">
+                            <div>
+                                <div class="course-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>16 Weeks</span>
+                                </div>
+                                <div class="course-level">
+                                    <i class="fas fa-signal"></i>
+                                    <span>Intermediate</span>
+                                </div>
+                            </div>
+                            <div class="course-price">$249</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <img src="images/course3.jpg" 
+                         alt="Digital Marketing" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Digital Marketing</span>
+                        <h3 class="course-title">Digital Marketing Masterclass</h3>
+                        <div class="course-instructor">
+                            <img src="images/course6.jpg" 
+                                 alt="Emma Rodriguez" class="instructor-img">
+                            <span>Emma Rodriguez</span>
+                        </div>
+                        <p>Master SEO, Social Media Marketing, Google Ads, and Content Marketing strategies</p>
+                        <div class="course-meta">
+                            <div>
+                                <div class="course-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>10 Weeks</span>
+                                </div>
+                                <div class="course-level">
+                                    <i class="fas fa-signal"></i>
+                                    <span>Beginner</span>
+                                </div>
+                            </div>
+                            <div class="course-price">$179</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 4 -->
+                <div class="course-card">
+                    <img src="images/course4.jpg" 
+                         alt="Mobile Development" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Mobile Development</span>
+                        <h3 class="course-title">React Native Mobile App Development</h3>
+                        <div class="course-instructor">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="David Park" class="instructor-img">
+                            <span>David Park</span>
+                        </div>
+                        <p>Build cross-platform mobile apps for iOS and Android using React Native</p>
+                        <div class="course-meta">
+                            <div>
+                                <div class="course-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>14 Weeks</span>
+                                </div>
+                                <div class="course-level">
+                                    <i class="fas fa-signal"></i>
+                                    <span>Intermediate</span>
+                                </div>
+                            </div>
+                            <div class="course-price">$229</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 5 -->
+                <div class="course-card">
+                    <img src="images/course5.jpg" 
+                         alt="UI/UX Design" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">UI/UX Design</span>
+                        <h3 class="course-title">UI/UX Design Fundamentals</h3>
+                        <div class="course-instructor">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="Sophia Williams" class="instructor-img">
+                            <span>Sophia Williams</span>
+                        </div>
+                        <p>Learn design principles, wireframing, prototyping, and user research techniques</p>
+                        <div class="course-meta">
+                            <div>
+                                <div class="course-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>8 Weeks</span>
+                                </div>
+                                <div class="course-level">
+                                    <i class="fas fa-signal"></i>
+                                    <span>Beginner</span>
+                                </div>
+                            </div>
+                            <div class="course-price">$159</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 6 -->
+                <div class="course-card">
+                    <img src="images/course6.jpg" 
+                         alt="Business" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Business</span>
+                        <h3 class="course-title">Business Analytics & Strategy</h3>
+                        <div class="course-instructor">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="Robert Kim" class="instructor-img">
+                            <span>Robert Kim</span>
+                        </div>
+                        <p>Learn data-driven decision making, business intelligence, and strategic planning</p>
+                        <div class="course-meta">
+                            <div>
+                                <div class="course-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>12 Weeks</span>
+                                </div>
+                                <div class="course-level">
+                                    <i class="fas fa-signal"></i>
+                                    <span>All Levels</span>
+                                </div>
+                            </div>
+                            <div class="course-price">$199</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#" class="view-all">View All Courses <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Features -->
+    <section class="courses-features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our Courses?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from industry professionals with years of practical experience</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Hands-on Projects</h3>
+                    <p>Build real-world projects to enhance your portfolio</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Certification</h3>
+                    <p>Get certified upon completion to showcase your skills</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Community Support</h3>
+                    <p>Join a community of learners and get support from peers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <!-- Footer logo image -->
+                    <img src="images/logo.png" 
+                         alt="INTERNEE.PK" style="width: 60px; height: 60px; border-radius: 8px; object-fit: cover;">
+                    <h3>INTERNEE.PK</h3>
+                    <p>Connecting students with opportunities</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="internships.html">Internships</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="companies.html">Companies</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to get latest course updates</p>
+                    <div class="subscribe-box">
+                        <input type="email" placeholder="Enter your email">
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 INTERNEE.PK. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter functionality
+            const filters = document.querySelectorAll('.category-filter');
+            const courseCards = document.querySelectorAll('.course-card');
+            
+            filters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    // Remove active class from all filters
+                    filters.forEach(f => f.classList.remove('active'));
+                    // Add active class to clicked filter
+                    this.classList.add('active');
+                    
+                    const category = this.textContent;
+                    
+                    // Show all cards if "All Courses" is selected
+                    if (category === 'All Courses') {
+                        courseCards.forEach(card => {
+                            card.style.display = 'block';
+                        });
+                    } else {
+                        // Filter cards based on category
+                        courseCards.forEach(card => {
+                            const cardCategory = card.querySelector('.course-category').textContent;
+                            if (cardCategory === category) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.querySelector('.courses-search input');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                courseCards.forEach(card => {
+                    const title = card.querySelector('.course-title').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    const category = card.querySelector('.course-category').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm) || category.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Course card click to redirect to course detail page
+            courseCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const title = this.querySelector('.course-title').textContent;
+                    // In a real application, you would redirect to the specific course page
+                    // For now, we'll use a simple example
+                    if (title.includes('Full Stack Web Development')) {
+                        window.location.href = 'fullstack-course.html';
+                    } else if (title.includes('Data Science')) {
+                        window.location.href = 'datascience-course.html';
+                    } else if (title.includes('Digital Marketing')) {
+                        window.location.href = 'marketing-course.html';
+                    } else if (title.includes('React Native')) {
+                        window.location.href = 'mobile-course.html';
+                    } else if (title.includes('UI/UX Design')) {
+                        window.location.href = 'design-course.html';
+                    } else if (title.includes('Business Analytics')) {
+                        window.location.href = 'business-course.html';
+                    }
+                });
+            });
+            
+            // Make course cards clickable
+            courseCards.forEach(card => {
+                card.style.cursor = 'pointer';
+            });
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - INTERNEE.PK</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="INTERNEE.PK Logo">
+                    <span>INTERNEE.PK</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="internships.html">Internships</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="companies.html">Companies</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-login">Login</a>
+                <a href="signup.html" class="btn-signup">Sign Up</a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1>Career Insights & Resources</h1>
+            <p>Get the latest tips, trends, and advice to boost your career and internship journey</p>
+            <div class="blog-search">
+                <input type="text" placeholder="Search blog articles...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Blog Post -->
+    <section class="featured-blog">
+        <div class="container">
+            <div class="featured-post">
+                <div class="featured-image">
+                    <img src="images/blogpost1.jpg" alt="Featured Blog Post">
+                </div>
+                <div class="featured-content">
+                    <span class="featured-badge">Featured</span>
+                    <h2>How to Ace Your Internship Interview: 10 Proven Tips</h2>
+                    <p>Learn the secrets to impressing recruiters and landing your dream internship with these expert tips and strategies.</p>
+                    <a href="blog-details.html" class="read-more">
+                        Read Full Article <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="blog-content">
+        <div class="container">
+            <div class="blog-container">
+                <div class="blog-posts" id="blogPosts">
+                    <!-- Blog posts will be loaded via JavaScript -->
+                </div>
+                
+                <div class="blog-sidebar">
+                    <!-- Categories Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Categories</h3>
+                        <ul class="categories-list">
+                            <li><a href="#">Career Tips <span>12</span></a></li>
+                            <li><a href="#">Interview Prep <span>8</span></a></li>
+                            <li><a href="#">Resume Writing <span>6</span></a></li>
+                            <li><a href="#">Internship Stories <span>15</span></a></li>
+                            <li><a href="#">Industry Trends <span>9</span></a></li>
+                            <li><a href="#">Skill Development <span>11</span></a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Recent Posts Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Recent Posts</h3>
+                        <div class="recent-posts">
+                            <a href="#" class="recent-post">
+                                <img src="images/blogpost2.jpg" alt="Recent Post">
+                                <div class="recent-post-content">
+                                    <h4>Top 5 Skills Employers Look For</h4>
+                                    <span>2 days ago</span>
+                                </div>
+                            </a>
+                            <a href="#" class="recent-post">
+                                <img src="images/blogpost3.jpg" alt="Recent Post">
+                                <div class="recent-post-content">
+                                    <h4>Remote Internship Success Guide</h4>
+                                    <span>5 days ago</span>
+                                </div>
+                            </a>
+                            <a href="#" class="recent-post">
+                                <img src="images/blogpost4.jpg" alt="Recent Post">
+                                <div class="recent-post-content">
+                                    <h4>Building Your Professional Network</h4>
+                                    <span>1 week ago</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Tags Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Popular Tags</h3>
+                        <div class="tags-cloud">
+                            <a href="#" class="tag-cloud">Interview</a>
+                            <a href="#" class="tag-cloud">Resume</a>
+                            <a href="#" class="tag-cloud">Career</a>
+                            <a href="#" class="tag-cloud">Tips</a>
+                            <a href="#" class="tag-cloud">Internship</a>
+                            <a href="#" class="tag-cloud">Skills</a>
+                            <a href="#" class="tag-cloud">Networking</a>
+                            <a href="#" class="tag-cloud">Success</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Newsletter Widget -->
+                    <div class="sidebar-widget newsletter-widget">
+                        <h3 class="widget-title">Newsletter</h3>
+                        <p>Subscribe to get latest career tips and internship opportunities</p>
+                        <input type="email" placeholder="Your email address">
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="blog-pagination">
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link">4</a>
+                <a href="#" class="page-link">Next</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="INTERNEE.PK">
+                    <h3>INTERNEE.PK</h3>
+                    <p>Connecting students with opportunities</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="internships.html">Internships</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="companies.html">Companies</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to get latest blog updates</p>
+                    <div class="subscribe-box">
+                        <input type="email" placeholder="Enter your email">
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 INTERNEE.PK. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/blog.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

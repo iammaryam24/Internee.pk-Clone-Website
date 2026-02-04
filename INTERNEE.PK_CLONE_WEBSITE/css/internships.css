@@ -1,0 +1,694 @@
+/* Add these new styles to your existing style.css */
+
+/* Micro Button Styles - Ultra Compact */
+.btn-login,
+.btn-signup,
+.search-btn,
+.apply-btn,
+.page-btn,
+.subscribe-box button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: none;
+    outline: none;
+    white-space: nowrap;
+}
+
+/* Button Variants - Micro */
+.btn-login {
+    color: var(--primary);
+    border: 1.5px solid var(--primary);
+    background: transparent;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    height: 36px;
+}
+
+.btn-login:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(37, 99, 235, 0.15);
+}
+
+.btn-signup {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    height: 36px;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.12);
+}
+
+.btn-signup:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.search-btn {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 10px 24px;
+    font-size: 0.9rem;
+    height: 44px;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.12);
+}
+
+.search-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.apply-btn {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    height: 34px;
+    min-width: 100px;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.12);
+}
+
+.apply-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+}
+
+.page-btn {
+    background: white;
+    border: 1.5px solid var(--border);
+    color: var(--text-dark);
+    padding: 6px 12px;
+    min-width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+}
+
+.page-btn:hover:not(.active) {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(37, 99, 235, 0.08);
+}
+
+.page-btn.active {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 3px 6px rgba(37, 99, 235, 0.12);
+}
+
+.subscribe-box button {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 8px 20px;
+    font-size: 0.85rem;
+    height: 40px;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.12);
+}
+
+.subscribe-box button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+/* Ultra Compact Content Grid System - Dense Layout */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+/* Micro Cards - Super Tiny */
+.content-card {
+    background: white;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    transition: all 0.2s ease;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    height: 160px; /* Micro height */
+    display: flex;
+    flex-direction: column;
+}
+
+.content-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: var(--primary-light);
+}
+
+/* Micro Card Header */
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.card-category {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+}
+
+.card-category.software {
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--primary);
+}
+
+.card-category.marketing {
+    background: rgba(124, 58, 237, 0.08);
+    color: var(--secondary);
+}
+
+.card-category.design {
+    background: rgba(245, 158, 11, 0.08);
+    color: var(--accent);
+}
+
+.featured-badge {
+    background: linear-gradient(135deg, var(--accent) 0%, #f97316 100%);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    box-shadow: 0 1px 3px rgba(245, 158, 11, 0.12);
+}
+
+/* Micro Card Content */
+.card-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    line-height: 1.2;
+    color: var(--text-dark);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-company {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 6px;
+}
+
+.company-logo {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    background: var(--bg-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+.company-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.company-info h4 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1px;
+}
+
+.company-info p {
+    font-size: 0.65rem;
+    color: var(--text-light);
+}
+
+/* Micro Card Details */
+.card-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 6px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.65rem;
+    color: var(--text-light);
+}
+
+.detail-item i {
+    color: var(--primary);
+    font-size: 0.7rem;
+}
+
+/* Micro Status Badges */
+.status-badge {
+    padding: 2px 5px;
+    border-radius: 8px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.status-remote {
+    color: var(--success);
+    background: rgba(16, 185, 129, 0.08);
+}
+
+.status-hybrid {
+    color: var(--accent);
+    background: rgba(245, 158, 11, 0.08);
+}
+
+.status-onsite {
+    color: var(--primary);
+    background: rgba(37, 99, 235, 0.08);
+}
+
+/* Micro Styled Badges */
+.styled-badge {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: inline-block;
+}
+
+.stipend-badge {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(34, 197, 94, 0.08) 100%);
+    color: var(--success);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.location-badge {
+    background: rgba(107, 114, 128, 0.08);
+    color: var(--text-light);
+    border: 1px solid rgba(107, 114, 128, 0.1);
+}
+
+.duration-badge {
+    background: rgba(124, 58, 237, 0.08);
+    color: var(--secondary);
+    border: 1px solid rgba(124, 58, 237, 0.15);
+}
+
+/* Micro Card Tags */
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    margin-top: 4px;
+}
+
+.card-tag {
+    padding: 1px 4px;
+    border-radius: 8px;
+    font-size: 0.6rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 1px;
+}
+
+.tag-primary {
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--primary);
+    border: 1px solid rgba(37, 99, 235, 0.1);
+}
+
+.tag-secondary {
+    background: rgba(124, 58, 237, 0.08);
+    color: var(--secondary);
+    border: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+.tag-accent {
+    background: rgba(245, 158, 11, 0.08);
+    color: var(--accent);
+    border: 1px solid rgba(245, 158, 11, 0.1);
+}
+
+/* Micro Card Footer */
+.card-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 6px;
+    border-top: 1px solid var(--border-light);
+}
+
+.posted-date {
+    font-size: 0.6rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+/* Micro Filter Section */
+.filter-section {
+    background: white;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.filter-section h3 {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+}
+
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filter-options label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    transition: all 0.2s ease;
+    padding: 3px;
+    border-radius: 4px;
+}
+
+.filter-options label:hover {
+    background: rgba(37, 99, 235, 0.04);
+}
+
+.filter-options input[type="checkbox"] {
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+    accent-color: var(--primary);
+    border-radius: 2px;
+}
+
+/* Micro Listing Header */
+.listing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.listing-header h2 {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+}
+
+.listing-header h2 span {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.sort-options {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sort-options label {
+    font-weight: 500;
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+.sort-options select {
+    padding: 4px 8px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background-color: white;
+    font-size: 0.8rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.sort-options select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 1px var(--primary-light);
+}
+
+/* Micro Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    margin-top: 24px;
+}
+
+/* Responsive Grid - Even Smaller */
+@media (max-width: 1200px) {
+    .content-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .content-card {
+        height: 150px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 992px) {
+    .content-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .content-card {
+        height: 140px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .content-card {
+        height: auto;
+        min-height: 120px;
+        padding: 10px;
+    }
+    
+    .card-footer {
+        flex-direction: column;
+        gap: 6px;
+        align-items: stretch;
+    }
+    
+    .apply-btn {
+        width: 100%;
+        margin-top: 4px;
+        height: 32px;
+        font-size: 0.8rem;
+        min-width: auto;
+    }
+    
+    .btn-login,
+    .btn-signup {
+        padding: 4px 12px;
+        font-size: 0.8rem;
+        height: 32px;
+    }
+    
+    .filter-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .listing-header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-card {
+        padding: 8px;
+        height: auto;
+        min-height: 110px;
+    }
+    
+    .card-title {
+        font-size: 0.8rem;
+    }
+    
+    .card-details {
+        gap: 2px;
+    }
+    
+    .detail-item {
+        font-size: 0.6rem;
+    }
+    
+    .btn-login,
+    .btn-signup {
+        padding: 3px 10px;
+        font-size: 0.75rem;
+        height: 30px;
+    }
+    
+    .search-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+        height: 40px;
+    }
+    
+    .content-grid {
+        gap: 6px;
+    }
+    
+    .company-logo {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .company-info h4 {
+        font-size: 0.7rem;
+    }
+    
+    .company-info p {
+        font-size: 0.6rem;
+    }
+}
+
+/* Nano Cards Option - For extreme density */
+.content-card.nano {
+    height: 130px;
+    padding: 8px;
+}
+
+.content-card.nano .card-title {
+    font-size: 0.8rem;
+    -webkit-line-clamp: 1;
+    margin-bottom: 2px;
+}
+
+.content-card.nano .card-company {
+    margin-bottom: 4px;
+}
+
+.content-card.nano .company-logo {
+    width: 20px;
+    height: 20px;
+}
+
+.content-card.nano .company-info h4 {
+    font-size: 0.7rem;
+}
+
+.content-card.nano .company-info p {
+    font-size: 0.6rem;
+}
+
+.content-card.nano .card-details {
+    gap: 2px;
+    margin-bottom: 2px;
+}
+
+.content-card.nano .detail-item {
+    font-size: 0.6rem;
+}
+
+.content-card.nano .card-footer {
+    padding-top: 4px;
+}
+
+.content-card.nano .posted-date {
+    font-size: 0.55rem;
+}
+
+.content-card.nano .apply-btn {
+    height: 28px;
+    font-size: 0.75rem;
+    padding: 3px 10px;
+}
+
+@media (max-width: 768px) {
+    .content-card.nano {
+        height: auto;
+        min-height: 100px;
+    }
+}
+
+/* Grid Layout Helpers */
+.content-grid.dense {
+    gap: 8px;
+}
+
+.content-grid.dense .content-card {
+    height: 140px;
+}
+
+.content-grid.very-dense {
+    gap: 6px;
+}
+
+.content-grid.very-dense .content-card {
+    height: 120px;
+    padding: 8px;
+}
+
+/* Truncate text utility */
+.truncate-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

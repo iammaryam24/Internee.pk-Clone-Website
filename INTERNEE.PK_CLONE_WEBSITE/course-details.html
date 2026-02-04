@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack Web Development Bootcamp - INTERNEE.PK</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/courses.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .course-detail-hero {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            padding: 80px 0;
+        }
+        
+        .course-detail-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .course-main-content {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+        
+        .course-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .course-features-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+        
+        .feature-list i {
+            color: var(--primary);
+        }
+        
+        .enroll-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            border-radius: var(--radius);
+            padding: 40px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .course-price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        
+        .enroll-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--white);
+            color: var(--primary);
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        
+        .enroll-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        .curriculum-section {
+            margin-top: 50px;
+        }
+        
+        .module {
+            background: var(--bg-light);
+            border-radius: var(--radius);
+            padding: 25px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .module:hover {
+            background: var(--primary-light);
+            transform: translateX(5px);
+        }
+        
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .lessons-list {
+            list-style: none;
+            padding-left: 20px;
+            display: none;
+        }
+        
+        .lessons-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-light);
+        }
+        
+        .module.active .lessons-list {
+            display: block;
+        }
+        
+        .instructor-card {
+            display: flex;
+            gap: 20px;
+            background: var(--bg-light);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-top: 30px;
+        }
+        
+        .instructor-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+        
+        .instructor-info h3 {
+            margin-bottom: 10px;
+        }
+        
+        .instructor-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat .number {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .stat .label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        @media (max-width: 992px) {
+            .course-detail-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .course-sidebar {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="INTERNEE.PK Logo">
+                    <span>INTERNEE.PK</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="internships.html">Internships</a></li>
+                <li><a href="courses.html" class="active">Courses</a></li>
+                <li><a href="companies.html">Companies</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-login">Login</a>
+                <a href="signup.html" class="btn-signup">Sign Up</a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Detail Hero -->
+    <section class="course-detail-hero">
+        <div class="container">
+            <div style="max-width: 800px;">
+                <span class="course-category" style="background: var(--white); color: var(--primary);">Web Development</span>
+                <h1 style="font-size: 2.8rem; margin: 20px 0;">Full Stack Web Development Bootcamp</h1>
+                <p style="font-size: 1.2rem; color: var(--text-light);">Master HTML, CSS, JavaScript, React, Node.js and build real-world projects from scratch</p>
+                
+                <div style="display: flex; gap: 30px; margin-top: 30px; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <i class="far fa-clock" style="color: var(--primary);"></i>
+                        <span>12 Weeks</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-signal" style="color: var(--primary);"></i>
+                        <span>Beginner to Advanced</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <i class="far fa-user" style="color: var(--primary);"></i>
+                        <span>Sarah Johnson</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-star" style="color: var(--accent);"></i>
+                        <span>4.8 (1,234 ratings)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Detail Content -->
+    <section class="courses-categories" style="padding: 60px 0; background: var(--white);">
+        <div class="container">
+            <div class="course-detail-container">
+                <!-- Main Content -->
+                <div class="course-main-content">
+                    <h2 style="margin-bottom: 25px;">Course Overview</h2>
+                    <p style="line-height: 1.8; color: var(--text-light); margin-bottom: 30px;">
+                        This comprehensive bootcamp will take you from beginner to job-ready full stack developer. 
+                        You'll learn modern web technologies including HTML5, CSS3, JavaScript (ES6+), React, Node.js, 
+                        Express, MongoDB, and more. By the end, you'll have built 10+ real-world projects for your portfolio.
+                    </p>
+                    
+                    <h3 style="margin: 30px 0 20px;">What You'll Learn</h3>
+                    <div class="feature-list">
+                        <li><i class="fas fa-check"></i> Build responsive websites with HTML5 and CSS3</li>
+                        <li><i class="fas fa-check"></i> Master JavaScript (ES6+) and modern frameworks</li>
+                        <li><i class="fas fa-check"></i> Create dynamic web applications with React</li>
+                        <li><i class="fas fa-check"></i> Develop RESTful APIs with Node.js and Express</li>
+                        <li><i class="fas fa-check"></i> Work with databases (MongoDB & SQL)</li>
+                        <li><i class="fas fa-check"></i> Deploy applications to cloud platforms</li>
+                        <li><i class="fas fa-check"></i> Implement authentication and security</li>
+                        <li><i class="fas fa-check"></i> Use Git & GitHub for version control</li>
+                    </div>
+                    
+                    <!-- Curriculum -->
+                    <div class="curriculum-section">
+                        <h3 style="margin-bottom: 25px;">Course Curriculum</h3>
+                        
+                        <div class="module active">
+                            <div class="module-header">
+                                <h4>Module 1: HTML & CSS Fundamentals</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <ul class="lessons-list">
+                                <li>Introduction to Web Development</li>
+                                <li>HTML5 Semantic Elements</li>
+                                <li>CSS3 Flexbox & Grid</li>
+                                <li>Responsive Design Principles</li>
+                                <li>Building Your First Website</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="module">
+                            <div class="module-header">
+                                <h4>Module 2: JavaScript Mastery</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <ul class="lessons-list">
+                                <li>JavaScript Fundamentals</li>
+                                <li>ES6+ Features (Arrow functions, Destructuring)</li>
+                                <li>DOM Manipulation</li>
+                                <li>Asynchronous JavaScript</li>
+                                <li>Modern JavaScript Patterns</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="module">
+                            <div class="module-header">
+                                <h4>Module 3: React Development</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <ul class="lessons-list">
+                                <li>React Components & Props</li>
+                                <li>State & Lifecycle Methods</li>
+                                <li>Hooks (useState, useEffect)</li>
+                                <li>React Router</li>
+                                <li>State Management</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Instructor -->
+                    <div class="instructor-card">
+                        <div class="instructor-img">SJ</div>
+                        <div class="instructor-info">
+                            <h3>Sarah Johnson</h3>
+                            <p style="color: var(--text-light); margin-bottom: 15px;">Senior Full Stack Developer with 8+ years of experience. Former lead developer at TechCorp.</p>
+                            <div class="instructor-stats">
+                                <div class="stat">
+                                    <div class="number">8+</div>
+                                    <div class="label">Years Experience</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">5,000+</div>
+                                    <div class="label">Students Taught</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">4.8</div>
+                                    <div class="label">Avg Rating</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="course-sidebar">
+                    <!-- Enroll Card -->
+                    <div class="enroll-card">
+                        <h3 style="color: var(--white);">Enroll in this Course</h3>
+                        <div class="course-price">$199</div>
+                        <p style="opacity: 0.9; margin-bottom: 20px;">One-time payment. Lifetime access.</p>
+                        
+                        <div class="feature-list" style="text-align: left; margin-top: 20px;">
+                            <li style="color: var(--white);"><i class="fas fa-check"></i> 50+ Hours of Content</li>
+                            <li style="color: var(--white);"><i class="fas fa-check"></i> 10+ Real Projects</li>
+                            <li style="color: var(--white);"><i class="fas fa-check"></i> Certificate of Completion</li>
+                            <li style="color: var(--white);"><i class="fas fa-check"></i> Lifetime Access</li>
+                            <li style="color: var(--white);"><i class="fas fa-check"></i> Community Support</li>
+                        </div>
+                        
+                        <button class="enroll-btn">Enroll Now</button>
+                        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">30-day money-back guarantee</p>
+                    </div>
+                    
+                    <!-- Course Features -->
+                    <div class="course-features-card">
+                        <h3>Course Features</h3>
+                        <div class="feature-list">
+                            <li><i class="fas fa-video"></i> 50+ Video Lessons</li>
+                            <li><i class="fas fa-file-code"></i> 20+ Coding Exercises</li>
+                            <li><i class="fas fa-project-diagram"></i> 10+ Real Projects</li>
+                            <li><i class="fas fa-certificate"></i> Certificate</li>
+                            <li><i class="fas fa-clock"></i> Self-paced Learning</li>
+                            <li><i class="fas fa-question-circle"></i> Q&A Support</li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="INTERNEE.PK">
+                    <h3>INTERNEE.PK</h3>
+                    <p>Connecting students with opportunities</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="internships.html">Internships</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="companies.html">Companies</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to get latest course updates</p>
+                    <div class="subscribe-box">
+                        <input type="email" placeholder="Enter your email">
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 INTERNEE.PK. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Module toggle functionality
+        document.querySelectorAll('.module').forEach(module => {
+            module.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const icon = this.querySelector('i');
+                if (this.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+        
+        // Enroll button functionality
+        document.querySelector('.enroll-btn').addEventListener('click', function() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (user && user.loggedIn) {
+                alert('Successfully enrolled in Full Stack Web Development Bootcamp!');
+                // In real implementation, redirect to course dashboard
+                // window.location.href = 'course-dashboard.html';
+            } else {
+                alert('Please login or signup to enroll in this course.');
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internships - INTERNEE.PK</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/internships.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="INTERNEE.PK Logo">
+                    <span>INTERNEE.PK</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="internships.html" class="active">Internships</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="companies.html">Companies</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-login">Login</a>
+                <a href="signup.html" class="btn-signup">Sign Up</a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Internships Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Find Your Dream Internship</h1>
+            <p>Browse through thousands of internship opportunities from top companies</p>
+            <div class="search-box">
+                <input type="text" placeholder="Search internships by title, company, or keyword">
+                <select>
+                    <option value="">All Categories</option>
+                    <option value="software">Software Development</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="design">Design</option>
+                    <option value="business">Business</option>
+                </select>
+                <select>
+                    <option value="">All Locations</option>
+                    <option value="karachi">Karachi</option>
+                    <option value="lahore">Lahore</option>
+                    <option value="islamabad">Islamabad</option>
+                    <option value="remote">Remote</option>
+                </select>
+                <button class="search-btn">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Internships Listing -->
+    <section class="internships-listing">
+        <div class="container">
+            <div class="listing-header">
+                <h2>Available Internships <span id="internshipCount">(25)</span></h2>
+                <div class="sort-options">
+                    <label>Sort by:</label>
+                    <select>
+                        <option value="recent">Most Recent</option>
+                        <option value="stipend">Highest Stipend</option>
+                        <option value="popular">Most Popular</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="internship-filters">
+                <div class="filter-section">
+                    <h3>Category</h3>
+                    <div class="filter-options">
+                        <label><input type="checkbox" checked> Software Development</label>
+                        <label><input type="checkbox"> Marketing</label>
+                        <label><input type="checkbox"> Design</label>
+                        <label><input type="checkbox"> Business</label>
+                        <label><input type="checkbox"> Engineering</label>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <h3>Type</h3>
+                    <div class="filter-options">
+                        <label><input type="checkbox" checked> Remote</label>
+                        <label><input type="checkbox"> On-site</label>
+                        <label><input type="checkbox"> Hybrid</label>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <h3>Duration</h3>
+                    <div class="filter-options">
+                        <label><input type="checkbox"> 1-2 months</label>
+                        <label><input type="checkbox" checked> 3-4 months</label>
+                        <label><input type="checkbox"> 5-6 months</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="internship-list" id="internshipList">
+                <!-- Internships will be loaded here -->
+            </div>
+            
+            <div class="pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">Next <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="INTERNEE.PK">
+                    <h3>INTERNEE.PK</h3>
+                    <p>Connecting students with opportunities</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="internships.html">Internships</a></li>
+                        <li><a href="#">Courses</a></li>
+                        <li><a href="#">Companies</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to get latest internship opportunities</p>
+                    <div class="subscribe-box">
+                        <input type="email" placeholder="Enter your email">
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 INTERNEE.PK. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/internships.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTERNEE.PK - Find Best Internships & Courses in Pakistan</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles for homepage */
+        .partners-section {
+            padding: 60px 0;
+            background-color: var(--white);
+            text-align: center;
+        }
+        
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .partner-logo {
+            height: 60px;
+            opacity: 0.7;
+            transition: all 0.3s;
+            filter: grayscale(100%);
+        }
+        
+        .partner-logo:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+            transform: translateY(-5px);
+        }
+        
+        .testimonials {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 50px auto 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 0 20px;
+        }
+        
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+        
+        .testimonial-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            position: relative;
+            padding: 0 20px;
+        }
+        
+        .testimonial-content::before,
+        .testimonial-content::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .testimonial-content::before {
+            top: -20px;
+            left: 0;
+        }
+        
+        .testimonial-content::after {
+            bottom: -40px;
+            right: 0;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+        
+        .author-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--border);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .slider-dot.active {
+            background-color: var(--primary);
+            transform: scale(1.2);
+        }
+        
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        
+        .slider-nav:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .slider-nav.prev {
+            left: -25px;
+        }
+        
+        .slider-nav.next {
+            right: -25px;
+        }
+        
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-cta-primary {
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 15px 40px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-cta-secondary {
+            background-color: transparent;
+            color: var(--white);
+            padding: 15px 40px;
+            border-radius: var(--radius);
+            border: 2px solid var(--white);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-cta-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .quick-links {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .link-card {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .link-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .link-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--white);
+            font-size: 1.8rem;
+        }
+        
+        .link-card h3 {
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .link-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .slider-nav {
+                display: none;
+            }
+            
+            .cta-content h2 {
+                font-size: 2.3rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-cta-primary,
+            .btn-cta-secondary {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="INTERNEE.PK Logo">
+                    <span>INTERNEE.PK</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="internships.html">Internships</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="companies.html">Companies</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-login">Login</a>
+                <a href="signup.html" class="btn-signup">Sign Up</a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+<section class="hero">
+    <div class="container hero-container" style="
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        gap: 50px;
+    ">
+        <div class="hero-content" style="
+            flex: 1;
+            min-width: 300px;
+        ">
+            <h1 style="
+                font-size: 3rem;
+                font-weight: 800;
+                line-height: 1.2;
+                margin-bottom: 20px;
+                color: #333;
+            ">
+                Launch Your Career with <span style="color: #4a6cf7;">Pakistan's #1</span> Internship Platform
+            </h1>
+            
+            <p style="
+                font-size: 1.1rem;
+                line-height: 1.6;
+                margin-bottom: 30px;
+                color: #666;
+                max-width: 600px;
+            ">
+                Find internships, learn skills, connect with top companies, and build your future with INTERNEE.PK
+            </p>
+            
+            <!-- Search Box -->
+            <div class="search-box" style="
+                background: white;
+                border-radius: 50px;
+                padding: 10px;
+                max-width: 500px;
+                margin-bottom: 40px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                border: 2px solid #e2e8f0;
+            ">
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    padding: 0 20px;
+                ">
+                    <span style="color: #666; margin-right: 10px; font-size: 1.1rem;">🔍</span>
+                    <input type="text" 
+                           placeholder="Search internships, courses, or companies..." 
+                           style="
+                                flex: 1;
+                                border: none;
+                                outline: none;
+                                padding: 12px 10px;
+                                font-size: 1rem;
+                                background: transparent;
+                                color: #333;
+                           ">
+                    <button class="search-btn" style="
+                        background: linear-gradient(135deg, #4a6cf7 0%, #2575fc 100%);
+                        color: white;
+                        border: none;
+                        padding: 12px 30px;
+                        border-radius: 40px;
+                        font-weight: 600;
+                        cursor: pointer;
+                        font-size: 1rem;
+                    ">
+                        Search
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Stats - NO MOVEMENT -->
+            <div class="stats" style="
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 15px;
+                max-width: 600px;
+            ">
+                <div class="stat-item">
+                    <h3 style="
+                        font-size: 2rem;
+                        font-weight: 700;
+                        color: #4a6cf7;
+                        margin: 0;
+                    ">5,000+</h3>
+                    <p style="
+                        font-size: 0.9rem;
+                        color: #666;
+                        margin: 5px 0 0 0;
+                    ">Internships</p>
+                </div>
+                
+                <div class="stat-item">
+                    <h3 style="
+                        font-size: 2rem;
+                        font-weight: 700;
+                        color:  #4a6cf7;
+                        margin: 0;
+                    ">1,000+</h3>
+                    <p style="
+                        font-size: 0.9rem;
+                        color: #666;
+                        margin: 5px 0 0 0;
+                    ">Companies</p>
+                </div>
+                
+                <div class="stat-item">
+                    <h3 style="
+                        font-size: 2rem;
+                        font-weight: 700;
+                        color:  #4a6cf7;
+                        margin: 0;
+                    ">50,000+</h3>
+                    <p style="
+                        font-size: 0.9rem;
+                        color: #666;
+                        margin: 5px 0 0 0;
+                    ">Students</p>
+                </div>
+                
+                <div class="stat-item">
+                    <h3 style="
+                        font-size: 2rem;
+                        font-weight: 700;
+                        color:  #4a6cf7;
+                        margin: 0;
+                    ">95%</h3>
+                    <p style="
+                        font-size: 0.9rem;
+                        color: #666;
+                        margin: 5px 0 0 0;
+                    ">Success Rate</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Image -->
+        <div style="
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        ">
+            <img src="images/sideicon.png" alt="Student Intern" style="
+                width: 100%;
+                max-width: 500px;
+                height: auto;
+                border-radius: 20px;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            ">
+        </div>
+    </div>
+</section>
+
+<!-- Partners Section -->
+<section class="partners-section" style="
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    overflow: hidden;
+    position: relative;
+">
+    <div class="container" style="
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        width: 100%;
+    ">
+        <h2 class="section-title" style="
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 80px;
+            color: #1e293b;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        ">
+            Trusted by Top Companies
+        </h2>
+        
+        <!-- Animated logos container -->
+        <div class="partners-carousel" style="
+            position: relative;
+            height: 140px;
+            overflow: hidden;
+            margin: 0 auto;
+            width: 100%;
+        ">
+            <!-- First row - sliding left -->
+            <div class="logos-track" style="
+                display: flex;
+                position: absolute;
+                left: 0;
+                top: 0;
+                gap: 80px;
+                animation: slideLeft 40s linear infinite;
+                white-space: nowrap;
+            ">
+                <!-- Duplicate logos for seamless animation -->
+                <div class="logo-item" style="
+                    flex-shrink: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 180px;
+                    height: 100px;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+                    padding: 25px;
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                ">
+                    <img src="images/apple.png" alt="Apple" style="
+                        height: 40px;
+                        width: auto;
+                        opacity: 0.9;
+                        transition: all 0.4s ease;
+                    ">
+                </div>
+                
+                <div class="logo-item" style="
+                    flex-shrink: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 180px;
+                    height: 100px;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+                    padding: 25px;
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                ">
+                    <img src="images/meta.jpg" alt="Meta" style="
+                        height: 35px;
+                        width: auto;
+                        opacity: 0.9;
+                        transition: all 0.4s ease;
+                    ">
+                </div>
+                
+                <div class="logo-item" style="
+                    flex-shrink: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 180px;
+                    height: 100px;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+                    padding: 25px;
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                ">
+                    <img src="images/facebook.png" alt="Facebook" style="
+                        height: 35px;
+                        width: auto;
+                        opacity: 0.9;
+                        transition: all 0.4s ease;
+                    ">
+                </div>
+                
+                <div class="logo-item" style="
+                    flex-shrink: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 180px;
+                    height: 100px;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+                    padding: 25px;
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                ">
+                    <img src="images/netflix.png" alt="Netflix" style="
+                        height: 25px;
+                        width: auto;
+                        opacity: 0.9;
+                        transition: all 0.4s ease;
+                    ">
+                </div>
+                
+                <div class="logo-item" style="
+                    flex-shrink: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 180px;
+                    height: 100px;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+                    padding: 25px;
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                ">
+                    <img src="images/google.png" alt="Google" style="
+                        height: 35px;
+                        width: auto;
+                        opacity: 0.9;
+                        transition: all 0.4s ease;
+                    ">
+                </div>
+                
+                <div class="logo-item" style="
+                    flex-shrink: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 180px;
+                    height: 100px;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+                    padding: 25px;
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                ">
+                    <img src="images/microsoft.jpg" alt="Microsoft" style="
+                        height: 25px;
+                        width: auto;
+                        opacity: 0.9;
+                        transition: all 0.4s ease;
+                    ">
+                </div>
+                
+                <div class="logo-item" style="
+                    flex-shrink: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 180px;
+                    height: 100px;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+                    padding: 25px;
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                ">
+                    <img src="images/amazon.png" alt="Amazon" style="
+                        height: 35px;
+                        width: auto;
+                        opacity: 0.9;
+                        transition: all 0.4s ease;
+                    ">
+                </div>
+                
+                <!-- Duplicate the set for seamless loop -->
+                <div class="logo-item" style="
+                    flex-shrink: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 180px;
+                    height: 100px;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+                    padding: 25px;
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                ">
+                    <img src="images/apple.png" alt="Apple" style="
+                        height: 40px;
+                        width: auto;
+                        opacity: 0.9;
+                        transition: all 0.4s ease;
+                    ">
+                </div>
+                
+                <div class="logo-item" style="
+                    flex-shrink: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 180px;
+                    height: 100px;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+                    padding: 25px;
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                ">
+                    <img src="images/meta.jpg" alt="Meta" style="
+                        height: 35px;
+                        width: auto;
+                        opacity: 0.9;
+                        transition: all 0.4s ease;
+                    ">
+                </div>
+                
+                <div class="logo-item" style="
+                    flex-shrink: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 180px;
+                    height: 100px;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+                    padding: 25px;
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                ">
+                    <img src="images/facebook.png" alt="Facebook" style="
+                        height: 35px;
+                        width: auto;
+                        opacity: 0.9;
+                        transition: all 0.4s ease;
+                    ">
+                </div>
+                
+                <div class="logo-item" style="
+                    flex-shrink: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 180px;
+                    height: 100px;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+                    padding: 25px;
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                ">
+                    <img src="images/netflix.png" alt="Netflix" style="
+                        height: 25px;
+                        width: auto;
+                        opacity: 0.9;
+                        transition: all 0.4s ease;
+                    ">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Static company names -->
+        <div class="static-logos" style="
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        ">
+            <div class="company-name" style="
+                background: white;
+                padding: 12px 28px;
+                border-radius: 50px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+                font-weight: 600;
+                color: #334155;
+                font-size: 16px;
+                transition: all 0.3s ease;
+            ">Apple</div>
+            <div class="company-name" style="
+                background: white;
+                padding: 12px 28px;
+                border-radius: 50px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+                font-weight: 600;
+                color: #334155;
+                font-size: 16px;
+                transition: all 0.3s ease;
+            ">Meta</div>
+            <div class="company-name" style="
+                background: white;
+                padding: 12px 28px;
+                border-radius: 50px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+                font-weight: 600;
+                color: #334155;
+                font-size: 16px;
+                transition: all 0.3s ease;
+            ">Facebook</div>
+            <div class="company-name" style="
+                background: white;
+                padding: 12px 28px;
+                border-radius: 50px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+                font-weight: 600;
+                color: #334155;
+                font-size: 16px;
+                transition: all 0.3s ease;
+            ">Netflix</div>
+            <div class="company-name" style="
+                background: white;
+                padding: 12px 28px;
+                border-radius: 50px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+                font-weight: 600;
+                color: #334155;
+                font-size: 16px;
+                transition: all 0.3s ease;
+            ">Google</div>
+        </div>
+    </div>
+    
+    <style>
+        @keyframes slideLeft {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        /* Add this to the style section for colorful hover */
+.logo-item:nth-child(1):hover { /* Apple */
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f7 100%);
+    border: 1px solid #e5e5e7;
+}
+.logo-item:nth-child(2):hover { /* Meta */
+    background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+    border: 1px solid #e0f0ff;
+}
+.logo-item:nth-child(3):hover { /* Facebook */
+    background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+    border: 1px solid #e0e8ff;
+}
+.logo-item:nth-child(4):hover { /* Netflix */
+    background: linear-gradient(135deg, #ffffff 0%, #fff0f0 100%);
+    border: 1px solid #ffe0e0;
+}
+        .logo-item:hover {
+            transform: translateY(-15px) scale(1.08);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .logo-item:hover img {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .company-name:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%);
+        }
+        
+        .partners-carousel::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 150px;
+            height: 100%;
+            background: linear-gradient(to right, rgba(248, 250, 252, 1), rgba(248, 250, 252, 0));
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .partners-carousel::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 150px;
+            height: 100%;
+            background: linear-gradient(to left, rgba(248, 250, 252, 1), rgba(248, 250, 252, 0));
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        /* Pause animation on hover */
+        .partners-carousel:hover .logos-track {
+            animation-play-state: paused;
+        }
+    </style>
+</section>
+
+    <!-- Categories Section -->
+<section class="categories" style="padding: 80px 0; background-color: #f8f9fa;">
+    <div class="container">
+        <h2 class="section-title">Explore by Category</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 50px; max-width: 700px; margin-left: auto; margin-right: auto;">
+            Discover internship opportunities in various fields that match your interests and career goals
+        </p>
+        <div class="category-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto;">
+            <div class="category-card" onclick="window.location.href='internships.html?category=software'" style="background-color: white; border-radius: 12px; padding: 30px 25px; text-align: center; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: all 0.3s ease; cursor: pointer; border: 1px solid #eee;">
+                <i class="fas fa-laptop-code" style="font-size: 40px; color: #4a6cf7; margin-bottom: 20px;"></i>
+                <h3 style="font-size: 20px; margin-bottom: 10px; color: #333;">Software Development</h3>
+                <p style="color: #666; font-size: 16px;">1,500+ internships</p>
+            </div>
+            <div class="category-card" onclick="window.location.href='internships.html?category=marketing'" style="background-color: white; border-radius: 12px; padding: 30px 25px; text-align: center; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: all 0.3s ease; cursor: pointer; border: 1px solid #eee;">
+                <i class="fas fa-chart-line" style="font-size: 40px; color: #4a6cf7; margin-bottom: 20px;"></i>
+                <h3 style="font-size: 20px; margin-bottom: 10px; color: #333;">Marketing</h3>
+                <p style="color: #666; font-size: 16px;">800+ internships</p>
+            </div>
+            <div class="category-card" onclick="window.location.href='internships.html?category=design'" style="background-color: white; border-radius: 12px; padding: 30px 25px; text-align: center; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: all 0.3s ease; cursor: pointer; border: 1px solid #eee;">
+                <i class="fas fa-paint-brush" style="font-size: 40px; color: #4a6cf7; margin-bottom: 20px;"></i>
+                <h3 style="font-size: 20px; margin-bottom: 10px; color: #333;">Design</h3>
+                <p style="color: #666; font-size: 16px;">600+ internships</p>
+            </div>
+            <div class="category-card" onclick="window.location.href='internships.html?category=business'" style="background-color: white; border-radius: 12px; padding: 30px 25px; text-align: center; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: all 0.3s ease; cursor: pointer; border: 1px solid #eee;">
+                <i class="fas fa-briefcase" style="font-size: 40px; color: #4a6cf7; margin-bottom: 20px;"></i>
+                <h3 style="font-size: 20px; margin-bottom: 10px; color: #333;">Business</h3>
+                <p style="color: #666; font-size: 16px;">900+ internships</p>
+            </div>
+            <div class="category-card" onclick="window.location.href='internships.html?category=engineering'" style="background-color: white; border-radius: 12px; padding: 30px 25px; text-align: center; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: all 0.3s ease; cursor: pointer; border: 1px solid #eee;">
+                <i class="fas fa-flask" style="font-size: 40px; color: #4a6cf7; margin-bottom: 20px;"></i>
+                <h3 style="font-size: 20px; margin-bottom: 10px; color: #333;">Engineering</h3>
+                <p style="color: #666; font-size: 16px;">700+ internships</p>
+            </div>
+            <div class="category-card" onclick="window.location.href='internships.html?category=healthcare'" style="background-color: white; border-radius: 12px; padding: 30px 25px; text-align: center; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: all 0.3s ease; cursor: pointer; border: 1px solid #eee;">
+                <i class="fas fa-heartbeat" style="font-size: 40px; color: #4a6cf7; margin-bottom: 20px;"></i>
+                <h3 style="font-size: 20px; margin-bottom: 10px; color: #333;">Healthcare</h3>
+                <p style="color: #666; font-size: 16px;">500+ internships</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="padding: 80px 0; background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <div style="width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <h2 style="text-align: center; font-size: 2.5rem; color: #2c3e50; margin-bottom: 20px; position: relative; font-weight: 700; letter-spacing: -0.5px;">
+            Popular Courses
+            <span style="content: ''; position: absolute; width: 80px; height: 4px; background: linear-gradient(to right, #6a11cb, #2575fc); bottom: -10px; left: 50%; transform: translateX(-50%); border-radius: 2px;"></span>
+        </h2>
+        <p style="text-align: center; color: #64748b; margin-bottom: 50px; max-width: 700px; margin-left: auto; margin-right: auto; font-size: 1.1rem; line-height: 1.6;">
+            Upskill yourself with our expert-led courses
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; margin-top: 30px;">
+            
+            <!-- Course 1 - FIXED -->
+            <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); transition: all 0.3s ease; border: 1px solid #e2e8f0;">
+                <div style="height: 180px; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); position: relative; padding: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div>
+                            <span style="background: rgba(255, 255, 255, 0.9); color: #6a11cb; padding: 6px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-bottom: 10px;">
+                                Web Development
+                            </span>
+                            <h3 style="color: white; font-size: 1.5rem; margin: 10px 0; font-weight: 600;">
+                                Full Stack Web Development
+                            </h3>
+                        </div>
+                        <!-- FIXED Circle 1 - SJ ADDED -->
+                        <div style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #6a11cb; font-size: 1rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); border: 3px solid rgba(255, 255, 255, 0.5);">
+                            SJ
+                        </div>
+                    </div>
+                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; margin-top: 10px;">
+                        Sarah Johnson
+                    </p>
+                </div>
+                <div style="padding: 25px;">
+                    <p style="color: #64748b; font-size: 0.95rem; line-height: 1.5; margin-bottom: 20px; min-height: 70px;">
+                        Master HTML, CSS, JavaScript, React, Node.js and build real-world projects
+                    </p>
+                    <div style="display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap;">
+                        <span style="background: #eef2ff; color: #6a11cb; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 500;">
+                            📅 12 weeks
+                        </span>
+                        <span style="background: #f0fdf4; color: #059669; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 500;">
+                            🎯 Beginner
+                        </span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+                        <span style="color: #2c3e50; font-size: 1.8rem; font-weight: 700;">
+                            $199
+                        </span>
+                        <a href="#" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: all 0.3s ease;">
+                            Enroll Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Course 2 -->
+            <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); transition: all 0.3s ease; border: 1px solid #e2e8f0;">
+                <div style="height: 180px; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); position: relative; padding: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div>
+                            <span style="background: rgba(255, 255, 255, 0.9); color: #6a11cb; padding: 6px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-bottom: 10px;">
+                                Data Science
+                            </span>
+                            <h3 style="color: white; font-size: 1.5rem; margin: 10px 0; font-weight: 600;">
+                                Data Science & Machine Learning
+                            </h3>
+                        </div>
+                        <!-- Circle 2 - DC -->
+                        <div style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #6a11cb; font-size: 1rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); border: 3px solid rgba(255, 255, 255, 0.5);">
+                            DC
+                        </div>
+                    </div>
+                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; margin-top: 10px;">
+                        David Chen
+                    </p>
+                </div>
+                <div style="padding: 25px;">
+                    <p style="color: #64748b; font-size: 0.95rem; line-height: 1.5; margin-bottom: 20px; min-height: 70px;">
+                        Learn Python, Pandas, NumPy, and Machine Learning algorithms
+                    </p>
+                    <div style="display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap;">
+                        <span style="background: #eef2ff; color: #6a11cb; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 500;">
+                            📅 16 weeks
+                        </span>
+                        <span style="background: #f0fdf4; color: #059669; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 500;">
+                            🎯 Intermediate
+                        </span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+                        <span style="color: #2c3e50; font-size: 1.8rem; font-weight: 700;">
+                            $299
+                        </span>
+                        <a href="#" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: all 0.3s ease;">
+                            Enroll Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Course 3 -->
+            <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); transition: all 0.3s ease; border: 1px solid #e2e8f0;">
+                <div style="height: 180px; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); position: relative; padding: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div>
+                            <span style="background: rgba(255, 255, 255, 0.9); color: #6a11cb; padding: 6px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-bottom: 10px;">
+                                Digital Marketing
+                            </span>
+                            <h3 style="color: white; font-size: 1.5rem; margin: 10px 0; font-weight: 600;">
+                                Digital Marketing Mastery
+                            </h3>
+                        </div>
+                        <!-- Circle 3 - EW -->
+                       <div style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #6a11cb; font-size: 1rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); border: 3px solid rgba(255, 255, 255, 0.5);">
+                            EW
+                        </div>
+                    </div>
+                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; margin-top: 10px;">
+                        Emma Wilson
+                    </p>
+                </div>
+                <div style="padding: 25px;">
+                    <p style="color: #64748b; font-size: 0.95rem; line-height: 1.5; margin-bottom: 20px; min-height: 70px;">
+                        SEO, Social Media Marketing, Google Ads, and Analytics
+                    </p>
+                    <div style="display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap;">
+                        <span style="background: #eef2ff; color: #6a11cb; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 500;">
+                            📅 8 weeks
+                        </span>
+                        <span style="background: #f0fdf4; color: #059669; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 500;">
+                            🎯 All Levels
+                        </span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+                        <span style="color: #2c3e50; font-size: 1.8rem; font-weight: 700;">
+                            $149
+                        </span>
+                        <a href="#" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: all 0.3s ease;">
+                            Enroll Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="courses.html" style="display: inline-block; padding: 12px 30px; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);">
+                Browse All Courses 
+                <span style="margin-left: 8px; transition: transform 0.3s ease;">→</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+    <!-- Quick Links -->
+    <section class="quick-links">
+        <div class="container">
+            <h2 class="section-title">Everything You Need in One Place</h2>
+            <div class="links-grid">
+                <a href="internships.html" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Find Internships</h3>
+                    <p>Browse thousands of internship opportunities from top companies across Pakistan</p>
+                </a>
+                <a href="courses.html" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Learn Skills</h3>
+                    <p>Enroll in courses taught by industry experts to enhance your career prospects</p>
+                </a>
+                <a href="companies.html" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Explore Companies</h3>
+                    <p>Discover companies hiring interns and learn about their culture and opportunities</p>
+                </a>
+                <a href="blog.html" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h3>Career Resources</h3>
+                    <p>Read articles and tips to help you succeed in your internship and career journey</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+  <!-- Testimonials -->
+<section style="padding:100px 0;background:linear-gradient(135deg,#667eea,#764ba2);overflow:hidden;">
+  <div style="max-width:900px;margin:auto;padding:0 20px;">
+
+    <h2 style="text-align:center;color:white;font-size:2.6rem;margin-bottom:10px;">
+      Success Stories
+    </h2>
+
+    <p style="text-align:center;color:rgba(255,255,255,0.9);margin-bottom:50px;">
+      Hear from students who kickstarted their careers through INTERNEE.PK
+    </p>
+
+    <div id="testimonialWrapper" style="position:relative;padding:0 70px;">
+
+      <!-- LEFT -->
+      <div onclick="testimonialPrev()" style="
+        position:absolute;left:0;top:50%;transform:translateY(-50%);
+        width:52px;height:52px;border-radius:50%;
+        background:white;display:flex;align-items:center;justify-content:center;
+        cursor:pointer;font-size:22px;z-index:10;
+        box-shadow:0 10px 25px rgba(0,0,0,.3);
+        user-select:none;
+      ">❮</div>
+
+      <!-- RIGHT -->
+      <div onclick="testimonialNext()" style="
+        position:absolute;right:0;top:50%;transform:translateY(-50%);
+        width:52px;height:52px;border-radius:50%;
+        background:white;display:flex;align-items:center;justify-content:center;
+        cursor:pointer;font-size:22px;z-index:10;
+        box-shadow:0 10px 25px rgba(0,0,0,.3);
+        user-select:none;
+      ">❯</div>
+
+      <!-- CARD -->
+      <div id="testimonialBox" style="
+        background:white;
+        padding:45px 35px;
+        border-radius:22px;
+        min-height:300px;
+        box-shadow:0 25px 60px rgba(0,0,0,.25);
+        transition:all .6s ease;
+      "></div>
+
+      <!-- DOTS -->
+      <div id="testimonialDots" style="
+        display:flex;
+        justify-content:center;
+        gap:14px;
+        margin-top:35px;
+      "></div>
+
+    </div>
+  </div>
+
+<script>
+(function () {
+  var testimonials = [
+    {
+      name: "Ali Khan",
+      rating: 5,
+      text: "INTERNEE.PK helped me land my dream internship! The process was smooth, and I gained invaluable experience in software engineering."
+    },
+    {
+      name: "Sara Riaz",
+      rating: 4,
+      text: "I got selected at Google for a summer internship! The platform connected me with top companies seamlessly."
+    },
+    {
+      name: "Mohammad Ahmed",
+      rating: 5,
+      text: "From application to offer letter in just 2 weeks! INTERNEE.PK made internship hunting effortless."
+    },
+    {
+      name: "Fatima Arif",
+      rating: 5,
+      text: "Best platform for marketing internships in Pakistan! I got 3 interview calls within a week and gained real-world experience."
+    },
+    {
+      name: "Hassan Ali",
+      rating: 4,
+      text: "Amazing experience! The mentorship guidance helped me prepare perfectly for interviews and land a data analysis internship."
+    }
+  ];
+
+  var index = 0;
+  var box = document.getElementById("testimonialBox");
+  var dotsBox = document.getElementById("testimonialDots");
+  var wrapper = document.getElementById("testimonialWrapper");
+  var interval;
+
+  function initials(name){
+    return name.split(" ").map(n=>n[0]).join("").toUpperCase();
+  }
+
+  function stars(n){
+    var s="";
+    for(let i=1;i<=5;i++) s+= i<=n ? "★" : "☆";
+    return `<div style="color:#f5b50a;font-size:22px;margin-top:8px;">${s}</div>`;
+  }
+
+  function render(){
+    box.style.opacity="0";
+    box.style.transform="translateY(20px)";
+    setTimeout(()=>{
+      var u=testimonials[index];
+      box.innerHTML=`
+        <div style="text-align:center;">
+          <div style="
+            width:72px;height:72px;border-radius:50%;
+            background:#667eea;color:white;
+            display:flex;align-items:center;justify-content:center;
+            font-size:24px;font-weight:bold;
+            margin:0 auto 18px;
+          ">${initials(u.name)}</div>
+
+          <p style="font-size:18px;font-style:italic;line-height:1.6;margin-bottom:18px;">
+            “${u.text}”
+          </p>
+
+          <h4 style="margin-bottom:5px;color:#333;">${u.name}</h4>
+          ${stars(u.rating)}
+        </div>
+      `;
+      box.style.opacity="1";
+      box.style.transform="translateY(0)";
+    },300);
+
+    dotsBox.innerHTML="";
+    testimonials.forEach((_,i)=>{
+      var d=document.createElement("span");
+      d.style.cssText=`
+        width:14px;height:14px;border-radius:50%;
+        background:white;cursor:pointer;
+        opacity:${i===index?1:.45};
+        transform:${i===index?"scale(1.4)":"scale(1)"};
+        transition:.3s;
+      `;
+      d.onclick=()=>{index=i;render();};
+      dotsBox.appendChild(d);
+    });
+  }
+
+  window.testimonialNext=()=>{index=(index+1)%testimonials.length;render();};
+  window.testimonialPrev=()=>{index=(index-1+testimonials.length)%testimonials.length;render();};
+
+  function startAuto(){ interval=setInterval(testimonialNext,4000); }
+  function stopAuto(){ clearInterval(interval); }
+
+  wrapper.onmouseenter=stopAuto;
+  wrapper.onmouseleave=startAuto;
+
+  document.addEventListener("keydown",e=>{
+    if(e.key==="ArrowRight") testimonialNext();
+    if(e.key==="ArrowLeft") testimonialPrev();
+  });
+
+  render(); startAuto();
+})();
+</script>
+</section>
+
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Career Journey?</h2>
+                <p>Join thousands of students who have found their dream internships through INTERNEE.PK</p>
+                <div class="cta-buttons">
+                    <a href="signup.html" class="btn-cta-primary">Create Free Account</a>
+                    <a href="internships.html" class="btn-cta-secondary">Browse Internships</a>
+                </div>
+                <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">
+                    It's completely free to join and apply for internships
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="INTERNEE.PK">
+                    <h3>INTERNEE.PK</h3>
+                    <p>Pakistan's leading platform connecting students with internship opportunities and career development resources.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="internships.html">Internships</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="companies.html">Companies</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to get latest internship opportunities and career tips</p>
+                    <div class="subscribe-box">
+                        <input type="email" placeholder="Enter your email" id="newsletterEmail">
+                        <button onclick="subscribeNewsletter()">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 INTERNEE.PK. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Homepage Specific JavaScript -->
+    <script>
+        // Featured Internships Data
+        const featuredInternships = [
+            {
+                title: "Frontend Developer Intern",
+                company: "Tech Solutions Inc.",
+                logo: "images/google.png",
+                type: "Remote",
+                duration: "3 months",
+                stipend: "$500/month",
+                location: "Karachi, Pakistan",
+                description: "Build responsive web applications using React and modern frontend technologies."
+            },
+            {
+                title: "Marketing Intern",
+                company: "Digital Marketing Pro",
+                logo: "images/meta.jpg",
+                type: "On-site",
+                duration: "2 months",
+                stipend: "$300/month",
+                location: "Lahore, Pakistan",
+                description: "Assist in digital marketing campaigns and social media management."
+            },
+            {
+                title: "UI/UX Designer Intern",
+                company: "Creative Designs",
+                logo: "images/logo.png",
+                type: "Hybrid",
+                duration: "4 months",
+                stipend: "$400/month",
+                location: "Islamabad, Pakistan",
+                description: "Design user interfaces and create wireframes for web and mobile applications."
+            }
+        ];
+
+        // Featured Courses Data
+        const featuredCourses = [
+            {
+                title: "Full Stack Web Development",
+                category: "Web Development",
+                description: "Master HTML, CSS, JavaScript, React, Node.js and build real-world projects",
+                duration: "12 weeks",
+                level: "Beginner",
+                price: "$199",
+                instructor: "Sarah Johnson",
+                image: "images/course1.jpg"
+            },
+            {
+                title: "Data Science & Machine Learning",
+                category: "Data Science",
+                description: "Learn Python, Pandas, NumPy, and Machine Learning algorithms",
+                duration: "16 weeks",
+                level: "Intermediate",
+                price: "$299",
+                instructor: "David Chen",
+                image: "images/course2.jpg"
+            },
+            {
+                title: "Digital Marketing Mastery",
+                category: "Digital Marketing",
+                description: "SEO, Social Media Marketing, Google Ads, and Analytics",
+                duration: "8 weeks",
+                level: "All Levels",
+                price: "$149",
+                instructor: "Emma Wilson",
+                image: "images/course3.jpg"
+            }
+        ];
+
+        // Testimonials Data
+        const testimonials = [
+            {
+                content: "INTERNEE.PK helped me land my dream internship at a tech startup. The platform made it so easy to apply and track my applications. The internship completely transformed my career prospects!",
+                author: "Ahmed Raza",
+                role: "Software Development Intern at TechCorp",
+                avatar: "AR"
+            },
+            {
+                content: "As a marketing student, I found the perfect internship through INTERNEE.PK. The application process was smooth, and I received multiple interview calls within days of applying. Highly recommended!",
+                author: "Fatima Khan",
+                role: "Marketing Intern at BrandWorks",
+                avatar: "FK"
+            },
+            {
+                content: "The courses on INTERNEE.PK helped me gain the skills I needed to stand out in interviews. Combined with the internship opportunities, this platform is a complete career solution for students.",
+                author: "Usman Ali",
+                role: "Data Science Intern at DataInsights",
+                avatar: "UA"
+            }
+        ];
+
+        // Current testimonial index
+        let currentTestimonial = 0;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFeaturedInternships();
+            loadFeaturedCourses();
+            loadTestimonials();
+            
+            // Initialize testimonial slider
+            updateTestimonialSlider();
+            
+            // Auto slide testimonials
+            setInterval(nextTestimonial, 5000);
+            
+            // Search functionality
+            const searchInput = document.querySelector('.search-box input');
+            const searchBtn = document.querySelector('.search-btn');
+            
+            searchBtn.addEventListener('click', function() {
+                performSearch(searchInput.value);
+            });
+            
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch(this.value);
+                }
+            });
+            
+            // Category card click handlers
+            document.querySelectorAll('.category-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const category = this.querySelector('h3').textContent;
+                    window.location.href = `internships.html?category=${encodeURIComponent(category)}`;
+                });
+            });
+        });
+
+        function loadFeaturedInternships() {
+            const internshipGrid = document.getElementById('featuredInternships');
+            if (!internshipGrid) return;
+            
+            internshipGrid.innerHTML = '';
+            
+            featuredInternships.forEach(internship => {
+                const card = document.createElement('div');
+                card.className = 'internship-card';
+                
+                card.innerHTML = `
+                    <div class="internship-header">
+                        <h3>${internship.title}</h3>
+                        <div class="company">
+                            <img src="${internship.logo}" alt="${internship.company}">
+                            <span>${internship.company}</span>
+                        </div>
+                    </div>
+                    <div class="internship-body">
+                        <p style="color: var(--text-light); margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">
+                            ${internship.description}
+                        </p>
+                        <div class="details">
+                            <div class="detail-item">
+                                <i class="fas fa-briefcase"></i>
+                                <span>${internship.type}</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="far fa-clock"></i>
+                                <span>${internship.duration}</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-money-bill"></i>
+                                <span>${internship.stipend}</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${internship.location}</span>
+                            </div>
+                        </div>
+                        <button class="apply-btn" onclick="applyForInternship('${internship.title}')">Apply Now</button>
+                    </div>
+                `;
+                
+                internshipGrid.appendChild(card);
+            });
+        }
+
+        function loadFeaturedCourses() {
+            const courseGrid = document.getElementById('featuredCourses');
+            if (!courseGrid) return;
+            
+            courseGrid.innerHTML = '';
+            
+            featuredCourses.forEach(course => {
+                const card = document.createElement('div');
+                card.className = 'course-card';
+                
+                card.innerHTML = `
+                    <div class="course-image">
+                        <img src="${course.image}" alt="${course.title}">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">${course.category}</span>
+                        <h3 class="course-title">${course.title}</h3>
+                        <p class="course-description">${course.description}</p>
+                        
+                        <div class="course-meta">
+                            <div>
+                                <div class="course-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>${course.duration}</span>
+                                </div>
+                                <div class="course-level">
+                                    <i class="fas fa-signal"></i>
+                                    <span>${course.level}</span>
+                                </div>
+                            </div>
+                            <div class="course-price">${course.price}</div>
+                        </div>
+                        
+                        <div class="course-footer">
+                            <div class="course-instructor">
+                                <div class="instructor-avatar">
+                                    ${course.instructor.split(' ').map(name => name[0]).join('')}
+                                </div>
+                                <span class="instructor-name">${course.instructor}</span>
+                            </div>
+                            <button class="course-btn" onclick="enrollInCourse('${course.title}')">Enroll Now</button>
+                        </div>
+                    </div>
+                `;
+                
+                courseGrid.appendChild(card);
+            });
+        }
+
+        function loadTestimonials() {
+            const testimonialTrack = document.getElementById('testimonialTrack');
+            const sliderDots = document.getElementById('sliderDots');
+            
+            if (!testimonialTrack) return;
+            
+            testimonialTrack.innerHTML = '';
+            sliderDots.innerHTML = '';
+            
+            testimonials.forEach((testimonial, index) => {
+                // Create testimonial slide
+                const slide = document.createElement('div');
+                slide.className = 'testimonial-slide';
+                
+                slide.innerHTML = `
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            ${testimonial.content}
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">${testimonial.avatar}</div>
+                            <div class="author-info">
+                                <h4>${testimonial.author}</h4>
+                                <p>${testimonial.role}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                testimonialTrack.appendChild(slide);
+                
+                // Create slider dot
+                const dot = document.createElement('div');
+                dot.className = `slider-dot ${index === 0 ? 'active' : ''}`;
+                dot.setAttribute('data-index', index);
+                dot.addEventListener('click', () => goToTestimonial(index));
+                sliderDots.appendChild(dot);
+            });
+        }
+
+        function updateTestimonialSlider() {
+            const track = document.getElementById('testimonialTrack');
+            if (!track) return;
+            
+            track.style.transform = `translateX(-${currentTestimonial * 100}%)`;
+            
+            // Update active dot
+            document.querySelectorAll('.slider-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentTestimonial);
+            });
+        }
+
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            updateTestimonialSlider();
+        }
+
+        function prevTestimonial() {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            updateTestimonialSlider();
+        }
+
+        function goToTestimonial(index) {
+            currentTestimonial = index;
+            updateTestimonialSlider();
+        }
+
+        function applyForInternship(internshipTitle) {
+            const user = JSON.parse(localStorage.getItem('user'));
+            
+            if (user && user.loggedIn) {
+                // Redirect to apply page
+                window.location.href = `apply.html?internship=${encodeURIComponent(internshipTitle)}`;
+            } else {
+                // Ask user to login/signup
+                if (confirm('You need to login or signup to apply for internships. Would you like to login now?')) {
+                    window.location.href = 'login.html';
+                }
+            }
+        }
+
+        function enrollInCourse(courseTitle) {
+            const user = JSON.parse(localStorage.getItem('user'));
+            
+            if (user && user.loggedIn) {
+                // Show enrollment confirmation
+                if (confirm(`Would you like to enroll in "${courseTitle}"?`)) {
+                    alert(`Successfully enrolled in ${courseTitle}! You will be redirected to the course dashboard.`);
+                    // In real implementation: window.location.href = `course-details.html?course=${encodeURIComponent(courseTitle)}`;
+                }
+            } else {
+                // Ask user to login/signup
+                if (confirm('You need to login or signup to enroll in courses. Would you like to login now?')) {
+                    window.location.href = 'login.html';
+                }
+            }
+        }
+
+        function performSearch(query) {
+            if (query.trim()) {
+                // Store search query in localStorage for use on other pages
+                localStorage.setItem('lastSearch', query);
+                
+                // Redirect to internships page with search query
+                window.location.href = `internships.html?search=${encodeURIComponent(query)}`;
+            } else {
+                alert('Please enter a search term');
+            }
+        }
+
+        function subscribeNewsletter() {
+            const emailInput = document.getElementById('newsletterEmail');
+            const email = emailInput.value.trim();
+            
+            if (!email) {
+                alert('Please enter your email address');
+                return;
+            }
+            
+            if (!validateEmail(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Get existing subscribers or create new array
+            const subscribers = JSON.parse(localStorage.getItem('newsletterSubscribers')) || [];
+            
+            // Check if email already exists
+            if (subscribers.includes(email)) {
+                alert('You are already subscribed to our newsletter!');
+            } else {
+                // Add new subscriber
+                subscribers.push(email);
+                localStorage.setItem('newsletterSubscribers', JSON.stringify(subscribers));
+                
+                // Show success message
+                alert('Thank you for subscribing to our newsletter! You will receive updates on the latest internships and career tips.');
+                
+                // Clear input
+                emailInput.value = '';
+            }
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Initialize stats animation
+        function animateStats() {
+            const statItems = document.querySelectorAll('.stat-item h3');
+            const finalValues = [5000, 1000, 50000, 95];
+            let durations = [2000, 1500, 2500, 1800];
+            
+            statItems.forEach((stat, index) => {
+                let startValue = 0;
+                const endValue = finalValues[index];
+                const duration = durations[index];
+                const increment = endValue / (duration / 16);
+                let current = startValue;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= endValue) {
+                        current = endValue;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = index === 3 ? Math.floor(current) + '%' : Math.floor(current).toLocaleString() + '+';
+                }, 16);
+            });
+        }
+
+        // Start animation when stats are in viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observe stats section
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

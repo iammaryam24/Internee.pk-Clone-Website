@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Details - INTERNEE.PK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* COPY ALL THE CSS FROM YOUR FIRST COMPANY DETAIL PAGE HERE */
+        /* (The entire <style> block from your first file) */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #dbeafe;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --bg-light: #f9fafb;
+            --border: #e5e7eb;
+            --radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar (Same as companies page) */
+        .navbar {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-login,
+        .btn-signup {
+            padding: 0.6rem 1.5rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .btn-login {
+            color: var(--text-dark);
+            border: 2px solid var(--border);
+        }
+
+        .btn-signup {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-signup:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Company Detail Hero */
+        .company-detail-hero {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: var(--white);
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .company-detail-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="500" cy="500" r="200" fill="%23ffffff" fill-opacity="0.1"/></svg>') repeat;
+        }
+
+        .company-header-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            position: relative;
+        }
+
+        .company-logo-large {
+            width: 180px;
+            height: 180px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .company-logo-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .company-info h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .company-info p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+        }
+
+        .company-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .company-stat {
+            text-align: center;
+        }
+
+        .company-stat .number {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--white);
+        }
+
+        .company-stat .label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            color: var(--white);
+        }
+
+        /* Company Detail Content */
+        .company-detail-content {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .about-section, .internships-section {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .about-section h2, .internships-section h2 {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+            color: var(--text-dark);
+            font-size: 1.8rem;
+        }
+
+        .about-content {
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .company-office-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .office-image {
+            height: 180px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .office-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .office-image:hover img {
+            transform: scale(1.1);
+        }
+
+        .internship-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .internship-item-detail {
+            background: var(--bg-light);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .internship-item-detail:hover {
+            background: var(--primary-light);
+            transform: translateX(5px);
+            box-shadow: var(--shadow);
+        }
+
+        .internship-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .internship-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .internship-type {
+            padding: 0.25rem 1rem;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .internship-details {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .detail {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .detail i {
+            color: var(--primary);
+        }
+
+        .apply-button {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .apply-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Sidebar */
+        .sidebar-section {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-section h3 {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-size: 1.3rem;
+        }
+
+        .info-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-light);
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list i {
+            color: var(--primary);
+            width: 20px;
+            font-size: 1.1rem;
+        }
+
+        .company-culture {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .culture-tag {
+            padding: 0.5rem 1rem;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .company-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .gallery-item {
+            height: 100px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .follow-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: var(--radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .follow-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .follow-btn.following {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Modal for image gallery */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: var(--radius);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Footer (Same as companies page) */
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h4,
+        .footer-newsletter h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .footer-newsletter p {
+            color: #d1d5db;
+            margin-bottom: 1rem;
+        }
+
+        .subscribe-box {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .subscribe-box input {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: var(--radius);
+            font-family: inherit;
+        }
+
+        .subscribe-box button {
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .subscribe-box button:hover {
+            background: var(--primary-dark);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #374151;
+            color: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .company-header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .company-stats {
+                justify-content: center;
+                gap: 2rem;
+            }
+            
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .company-office-images {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .auth-buttons {
+                display: none;
+            }
+            
+            .company-info h1 {
+                font-size: 2.5rem;
+            }
+            
+            .company-logo-large {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .company-office-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .internship-item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .company-info h1 {
+                font-size: 2rem;
+            }
+            
+            .company-stats {
+                gap: 1.5rem;
+            }
+            
+            .company-stat .number {
+                font-size: 1.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" 
+                         alt="INTERNEE.PK Logo">
+                    <span>INTERNEE.PK</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="internships.html">Internships</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="companies.html" class="active">Companies</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-login">Login</a>
+                <a href="signup.html" class="btn-signup">Sign Up</a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div id="companyDetailContent">
+        <!-- Content will be loaded dynamically based on company ID -->
+        <div style="text-align: center; padding: 4rem;">
+            <i class="fas fa-spinner fa-spin fa-3x" style="color: #2563eb;"></i>
+            <h2>Loading company details...</h2>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="image/logo.png"
+                         alt="INTERNEE.PK">
+                    <h3>INTERNEE.PK</h3>
+                    <p>Connecting students with opportunities</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="internships.html">Internships</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="companies.html">Companies</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to get latest internship opportunities</p>
+                    <div class="subscribe-box">
+                        <input type="email" placeholder="Enter your email">
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 INTERNEE.PK. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Company data matching your companies.js - NOW WITH ALL 6 COMPANIES
+        const companiesData = {
+            1: {
+                name: "Tech Innovations Inc.",
+                description: "Leading AI & Machine Learning solutions provider with cutting-edge technology for modern businesses.",
+                logo: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80&fit=crop",
+                category: "Technology",
+                employees: 500,
+                internships: 15,
+                location: "Karachi",
+                founded: "2015",
+                countries: "50+",
+                industry: "Technology",
+                website: "techinnovations.com",
+                email: "careers@techinnovations.com",
+                phone: "+92 21 12345678",
+                tags: ["AI/ML", "Startup", "Remote"],
+                about: "Tech Innovations Inc. is a leading technology company specializing in artificial intelligence and machine learning solutions. Founded in 2015, we have grown to become a trusted partner for businesses seeking to leverage cutting-edge technology to solve complex problems.\n\nOur team of 500+ engineers, data scientists, and researchers work together to develop innovative solutions that transform industries. From healthcare to finance, our AI-powered products are helping organizations make smarter decisions and drive growth.\n\nWe believe in fostering a culture of innovation, collaboration, and continuous learning. Our internship program is designed to give students hands-on experience with real-world projects, mentorship from industry experts, and the opportunity to contribute to meaningful work.",
+                culture: ["Innovative", "Collaborative", "Learning Focused", "Remote-friendly", "Work-Life Balance", "Diverse"]
+            },
+            2: {
+                name: "Digital Wizards",
+                description: "Creative digital marketing agency specializing in brand strategy and online presence.",
+                logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80&fit=crop",
+                category: "Marketing",
+                employees: 150,
+                internships: 8,
+                location: "Lahore",
+                founded: "2018",
+                countries: "10+",
+                industry: "Marketing",
+                website: "digitalwizards.com",
+                email: "hr@digitalwizards.com",
+                phone: "+92 42 87654321",
+                tags: ["Creative", "Agency", "Hybrid"],
+                about: "Digital Wizards is a premier digital marketing agency that transforms brands through innovative strategies and creative solutions. Since 2018, we've been helping businesses establish strong online presence and achieve measurable results.\n\nOur team of marketing experts, designers, and strategists work collaboratively to deliver exceptional results for clients across various industries. We specialize in social media marketing, SEO, content creation, and brand development.\n\nWe offer internship opportunities in various departments including marketing, design, content creation, and client management. Our interns get hands-on experience working on real client projects under the guidance of industry professionals.",
+                culture: ["Creative", "Dynamic", "Fast-paced", "Collaborative", "Growth-oriented", "Client-focused"]
+            },
+            3: {
+                name: "Cloud Solutions Ltd.",
+                description: "Enterprise cloud infrastructure and managed services provider.",
+                logo: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80&fit=crop",
+                category: "Cloud Computing",
+                employees: 300,
+                internships: 12,
+                location: "Islamabad",
+                founded: "2016",
+                countries: "25+",
+                industry: "Technology",
+                website: "cloudsolutions.com",
+                email: "info@cloudsolutions.com",
+                phone: "+92 51 98765432",
+                tags: ["Cloud", "Infrastructure", "On-site"],
+                about: "Cloud Solutions Ltd. is a leading provider of enterprise cloud infrastructure and managed services. We help businesses migrate, manage, and optimize their cloud environments for maximum efficiency and security.\n\nWith expertise in AWS, Azure, and Google Cloud Platform, we deliver comprehensive cloud solutions tailored to each client's unique needs. Our services include cloud migration, DevOps, security, and 24/7 monitoring.\n\nWe offer internship programs in cloud engineering, DevOps, cybersecurity, and cloud architecture. Interns work on real-world projects and gain exposure to the latest cloud technologies and best practices.",
+                culture: ["Technical", "Professional", "Secure", "Reliable", "Innovative", "Customer-centric"]
+            },
+            4: {
+                name: "FinTech Pro",
+                description: "Innovative financial technology solutions for modern banking.",
+                logo: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80&fit=crop",
+                category: "Finance",
+                employees: 250,
+                internships: 10,
+                location: "Karachi",
+                founded: "2017",
+                countries: "30+",
+                industry: "Finance",
+                website: "fintechpro.com",
+                email: "careers@fintechpro.com",
+                phone: "+92 21 23456789",
+                tags: ["Finance", "Technology", "Hybrid"],
+                about: "FinTech Pro is revolutionizing the financial industry with cutting-edge technology solutions. Since 2017, we've been at the forefront of digital banking innovation, providing secure and efficient financial services to millions of customers.\n\nOur team of finance experts and technologists work together to create solutions that simplify banking, enhance security, and improve user experience. We specialize in payment systems, blockchain technology, digital wallets, and fraud detection systems.\n\nOur internship program offers opportunities in software development, cybersecurity, financial analysis, and product management. Interns work on real financial products and gain valuable experience in the fast-growing fintech industry.",
+                culture: ["Innovative", "Secure", "Customer-focused", "Fast-paced", "Technical", "Ambitious"]
+            },
+            5: {
+                name: "HealthTech Solutions",
+                description: "Healthcare technology company revolutionizing patient care.",
+                logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXY6XAsYL3LY2aFcnlLv5oY7ffrZ2zu8CBvQ&s",
+                category: "Healthcare",
+                employees: 200,
+                internships: 7,
+                location: "Lahore",
+                founded: "2019",
+                countries: "15+",
+                industry: "Healthcare",
+                website: "healthtechsolutions.com",
+                email: "info@healthtechsolutions.com",
+                phone: "+92 42 76543210",
+                tags: ["Healthcare", "Medical", "On-site"],
+                about: "HealthTech Solutions is transforming healthcare delivery through innovative technology solutions. We're dedicated to improving patient outcomes and making healthcare more accessible and efficient.\n\nOur solutions include telemedicine platforms, electronic health records systems, medical imaging software, and AI-powered diagnostic tools. We partner with hospitals, clinics, and healthcare providers to implement technology that enhances patient care.\n\nWe offer internships in software development, data science, biomedical engineering, and healthcare administration. Our interns contribute to projects that have a real impact on people's health and well-being.",
+                culture: ["Compassionate", "Innovative", "Patient-focused", "Technical", "Collaborative", "Impact-driven"]
+            },
+            6: {
+                name: "Creative Studio X",
+                description: "UI/UX design agency creating beautiful digital experiences.",
+                logo: "data:image/jpeg;base64,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",
+                category: "Design",
+                employees: 80,
+                internships: 6,
+                location: "Remote",
+                founded: "2020",
+                countries: "Global",
+                industry: "Design",
+                website: "creativestudiox.com",
+                email: "joinus@creativestudiox.com",
+                phone: "+92 300 1234567",
+                tags: ["Design", "Creative", "Remote"],
+                about: "Creative Studio X is a leading UI/UX design agency that creates exceptional digital experiences for clients worldwide. We believe that great design can transform businesses and improve user engagement.\n\nOur team of designers, researchers, and strategists work on projects ranging from mobile apps and websites to complete digital transformation initiatives. We've worked with startups and Fortune 500 companies alike, delivering designs that are both beautiful and functional.\n\nOur internship program is perfect for creative individuals looking to build their portfolio. Interns work alongside senior designers on real client projects, learning industry-standard tools and methodologies.",
+                culture: ["Creative", "Remote-first", "Collaborative", "Innovative", "Flexible", "Quality-focused"]
+            }
+        };
+
+        // Internship data for ALL 6 COMPANIES
+        const internshipsData = {
+            1: [
+                {
+                    id: 1,
+                    title: "AI/ML Research Intern",
+                    type: "Remote",
+                    duration: "6 months",
+                    stipend: "$800/month",
+                    qualification: "Computer Science",
+                    location: "Remote",
+                    description: "Work on cutting-edge machine learning projects. Assist in research and development of new algorithms."
+                },
+                {
+                    id: 2,
+                    title: "Frontend Developer Intern",
+                    type: "Hybrid",
+                    duration: "3 months",
+                    stipend: "$600/month",
+                    qualification: "Any Engineering",
+                    location: "Karachi, Pakistan",
+                    description: "Build responsive web applications using React. Work with our UI/UX team to implement designs."
+                },
+                {
+                    id: 3,
+                    title: "Data Science Intern",
+                    type: "On-site",
+                    duration: "4 months",
+                    stipend: "$700/month",
+                    qualification: "Data Science",
+                    location: "Lahore, Pakistan",
+                    description: "Analyze large datasets, build predictive models, and create data visualizations for client projects."
+                }
+            ],
+            2: [
+                {
+                    id: 4,
+                    title: "Digital Marketing Intern",
+                    type: "Hybrid",
+                    duration: "3 months",
+                    stipend: "$500/month",
+                    qualification: "Marketing/Business",
+                    location: "Lahore, Pakistan",
+                    description: "Assist in social media campaigns, content creation, and marketing analytics."
+                },
+                {
+                    id: 5,
+                    title: "Graphic Design Intern",
+                    type: "Remote",
+                    duration: "4 months",
+                    stipend: "$550/month",
+                    qualification: "Design/Fine Arts",
+                    location: "Remote",
+                    description: "Create visual content for digital marketing campaigns and brand materials."
+                }
+            ],
+            3: [
+                {
+                    id: 6,
+                    title: "Cloud Engineer Intern",
+                    type: "On-site",
+                    duration: "5 months",
+                    stipend: "$750/month",
+                    qualification: "Computer Science",
+                    location: "Islamabad, Pakistan",
+                    description: "Assist in cloud infrastructure setup, deployment, and management."
+                },
+                {
+                    id: 7,
+                    title: "DevOps Intern",
+                    type: "Hybrid",
+                    duration: "4 months",
+                    stipend: "$700/month",
+                    qualification: "Computer Science",
+                    location: "Islamabad, Pakistan",
+                    description: "Work on CI/CD pipelines, automation scripts, and deployment processes."
+                }
+            ],
+            4: [
+                {
+                    id: 8,
+                    title: "Financial Analyst Intern",
+                    type: "Hybrid",
+                    duration: "4 months",
+                    stipend: "$650/month",
+                    qualification: "Finance/Business",
+                    location: "Karachi, Pakistan",
+                    description: "Analyze financial data, prepare reports, and assist in investment research."
+                },
+                {
+                    id: 9,
+                    title: "Blockchain Developer Intern",
+                    type: "Remote",
+                    duration: "5 months",
+                    stipend: "$800/month",
+                    qualification: "Computer Science",
+                    location: "Remote",
+                    description: "Develop smart contracts and blockchain-based financial applications."
+                }
+            ],
+            5: [
+                {
+                    id: 10,
+                    title: "Medical Data Analyst Intern",
+                    type: "On-site",
+                    duration: "4 months",
+                    stipend: "$600/month",
+                    qualification: "Data Science/Medicine",
+                    location: "Lahore, Pakistan",
+                    description: "Analyze medical datasets and assist in developing healthcare algorithms."
+                },
+                {
+                    id: 11,
+                    title: "Healthcare Software Intern",
+                    type: "Hybrid",
+                    duration: "3 months",
+                    stipend: "$550/month",
+                    qualification: "Software Engineering",
+                    location: "Lahore, Pakistan",
+                    description: "Develop features for healthcare management software and telemedicine platforms."
+                }
+            ],
+            6: [
+                {
+                    id: 12,
+                    title: "UI/UX Design Intern",
+                    type: "Remote",
+                    duration: "3 months",
+                    stipend: "$500/month",
+                    qualification: "Design",
+                    location: "Remote",
+                    description: "Create wireframes, prototypes, and visual designs for web and mobile applications."
+                },
+                {
+                    id: 13,
+                    title: "Product Design Intern",
+                    type: "Remote",
+                    duration: "4 months",
+                    stipend: "$550/month",
+                    qualification: "Design",
+                    location: "Remote",
+                    description: "Work on end-to-end product design from research to final implementation."
+                }
+            ]
+        };
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get company ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const companyId = urlParams.get('id') || 1;
+            
+            // Load company details
+            loadCompanyDetail(companyId);
+            
+            // Setup mobile menu
+            document.querySelector('.hamburger').addEventListener('click', function() {
+                const navMenu = document.querySelector('.nav-menu');
+                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.position = 'absolute';
+                navMenu.style.top = '100%';
+                navMenu.style.left = '0';
+                navMenu.style.right = '0';
+                navMenu.style.background = 'var(--white)';
+                navMenu.style.padding = '1rem';
+                navMenu.style.boxShadow = 'var(--shadow)';
+            });
+        });
+
+        function loadCompanyDetail(companyId) {
+            const company = companiesData[companyId];
+            
+            // Check if company exists
+            if (!company) {
+                document.getElementById('companyDetailContent').innerHTML = `
+                    <div style="text-align: center; padding: 4rem;">
+                        <i class="fas fa-exclamation-triangle fa-3x" style="color: #f59e0b;"></i>
+                        <h2>Company Not Found</h2>
+                        <p>The company you're looking for doesn't exist or has been removed.</p>
+                        <a href="companies.html" class="btn-login" style="margin-top: 1rem; display: inline-block; text-decoration: none; padding: 0.6rem 1.5rem; background: var(--primary); color: var(--white); border-radius: var(--radius);">
+                            Back to Companies
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+            
+            const internships = internshipsData[companyId] || [];
+            
+            // Render company detail page
+            document.getElementById('companyDetailContent').innerHTML = `
+                <!-- Company Detail Hero -->
+                <section class="company-detail-hero">
+                    <div class="container">
+                        <div class="company-header-content">
+                            <div class="company-logo-large">
+                                <img src="${company.logo}" alt="${company.name}">
+                            </div>
+                            <div class="company-info">
+                                <h1>${company.name}</h1>
+                                <p>${company.description}</p>
+                                <div class="company-stats">
+                                    <div class="company-stat">
+                                        <div class="number">${company.founded}</div>
+                                        <div class="label">Founded</div>
+                                    </div>
+                                    <div class="company-stat">
+                                        <div class="number">${company.employees}+</div>
+                                        <div class="label">Employees</div>
+                                    </div>
+                                    <div class="company-stat">
+                                        <div class="number">${company.countries}</div>
+                                        <div class="label">Countries</div>
+                                    </div>
+                                    <div class="company-stat">
+                                        <div class="number">${company.internships}</div>
+                                        <div class="label">Open Internships</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Company Detail Content -->
+                <section class="company-detail-content">
+                    <div class="container">
+                        <div class="detail-grid">
+                            <!-- Main Content -->
+                            <div>
+                                <!-- About Section -->
+                                <div class="about-section">
+                                    <h2>About Company</h2>
+                                    <div class="about-content">
+                                        ${company.about.split('\n\n').map(paragraph => `<p>${paragraph}</p>`).join('')}
+                                        
+                                        <!-- Company Office Images -->
+                                        <div class="company-office-images">
+                                            <div class="office-image" data-image="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                                                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" 
+                                                     alt="${company.name} Office">
+                                            </div>
+                                            <div class="office-image" data-image="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" 
+                                                     alt="Company Workspace">
+                                            </div>
+                                            <div class="office-image" data-image="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                                                <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" 
+                                                     alt="Team Collaboration">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Internships Section -->
+                                <div class="internships-section">
+                                    <h2>Available Internships</h2>
+                                    <div class="internship-list" id="internshipList">
+                                        ${internships.length > 0 ? 
+                                            internships.map(internship => `
+                                                <div class="internship-item-detail" data-id="${internship.id}">
+                                                    <div class="internship-item-header">
+                                                        <h3 class="internship-title">${internship.title}</h3>
+                                                        <span class="internship-type">${internship.type}</span>
+                                                    </div>
+                                                    <div class="internship-details">
+                                                        <div class="detail">
+                                                            <i class="far fa-clock"></i>
+                                                            <span>${internship.duration}</span>
+                                                        </div>
+                                                        <div class="detail">
+                                                            <i class="fas fa-money-bill"></i>
+                                                            <span>${internship.stipend}</span>
+                                                        </div>
+                                                        <div class="detail">
+                                                            <i class="fas fa-graduation-cap"></i>
+                                                            <span>${internship.qualification}</span>
+                                                        </div>
+                                                        <div class="detail">
+                                                            <i class="fas fa-map-marker-alt"></i>
+                                                            <span>${internship.location}</span>
+                                                        </div>
+                                                    </div>
+                                                    <p style="color: var(--text-light); margin-bottom: 1rem; line-height: 1.6;">
+                                                        ${internship.description}
+                                                    </p>
+                                                    <button class="apply-button" onclick="applyForInternship(${internship.id}, '${company.name}')">
+                                                        Apply Now
+                                                    </button>
+                                                </div>
+                                            `).join('') : 
+                                            '<div class="no-internships"><p>No internships available at the moment. Please check back later.</p></div>'
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sidebar -->
+                            <div>
+                                <!-- Company Info -->
+                                <div class="sidebar-section">
+                                    <h3>Company Information</h3>
+                                    <ul class="info-list">
+                                        <li>
+                                            <i class="fas fa-industry"></i>
+                                            <span><strong>Industry:</strong> ${company.industry}</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-users"></i>
+                                            <span><strong>Company Size:</strong> ${company.employees}+ Employees</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            <span><strong>Headquarters:</strong> ${company.location}, Pakistan</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-globe"></i>
+                                            <span><strong>Website:</strong> ${company.website}</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-envelope"></i>
+                                            <span><strong>Email:</strong> ${company.email}</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-phone"></i>
+                                            <span><strong>Phone:</strong> ${company.phone}</span>
+                                        </li>
+                                    </ul>
+                                    <button class="follow-btn" id="followBtn" data-company-id="${companyId}">
+                                        <i class="far fa-bookmark"></i> Follow Company
+                                    </button>
+                                </div>
+                                
+                                <!-- Company Culture -->
+                                <div class="sidebar-section">
+                                    <h3>Company Culture</h3>
+                                    <div class="company-culture">
+                                        ${company.culture.map(tag => `<span class="culture-tag">${tag}</span>`).join('')}
+                                    </div>
+                                </div>
+                                
+                                <!-- Benefits -->
+                                <div class="sidebar-section">
+                                    <h3>Internship Benefits</h3>
+                                    <ul class="info-list">
+                                        <li><i class="fas fa-check"></i> Mentorship from experts</li>
+                                        <li><i class="fas fa-check"></i> Real-world projects</li>
+                                        <li><i class="fas fa-check"></i> Flexible hours</li>
+                                        <li><i class="fas fa-check"></i> Stipend & bonuses</li>
+                                        <li><i class="fas fa-check"></i> Certificate & LOR</li>
+                                        <li><i class="fas fa-check"></i> Job opportunities</li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Company Gallery -->
+                                <div class="sidebar-section">
+                                    <h3>Company Gallery</h3>
+                                    <div class="company-gallery">
+                                        <div class="gallery-item" data-image="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100&q=80" 
+                                                 alt="Tech Lab">
+                                        </div>
+                                        <div class="gallery-item" data-image="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                                            <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100&q=80" 
+                                                 alt="Team Meeting">
+                                        </div>
+                                        <div class="gallery-item" data-image="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100&q=80" 
+                                                 alt="Modern Office">
+                                        </div>
+                                        <div class="gallery-item" data-image="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                                            <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100&q=80" 
+                                                 alt="Innovation Hub">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Image Modal -->
+                <div class="modal" id="imageModal">
+                    <button class="modal-close" onclick="closeModal()">&times;</button>
+                    <div class="modal-content">
+                        <img id="modalImage" src="" alt="Enlarged View">
+                    </div>
+                </div>
+            `;
+            
+            // Setup event listeners for the loaded content
+            setupCompanyDetailListeners();
+            setupFollowButton();
+        }
+
+        function setupCompanyDetailListeners() {
+            // Image gallery click handlers
+            document.querySelectorAll('.office-image, .gallery-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const imageUrl = this.dataset.image || this.querySelector('img').src;
+                    openModal(imageUrl);
+                });
+            });
+        }
+
+        function setupFollowButton() {
+            const followBtn = document.getElementById('followBtn');
+            if (!followBtn) return;
+            
+            const companyId = followBtn.dataset.companyId;
+            const company = companiesData[companyId];
+            
+            // Load saved follow state
+            const savedFollowState = localStorage.getItem(`followCompany_${companyId}`);
+            if (savedFollowState === 'true') {
+                followBtn.innerHTML = '<i class="fas fa-bookmark"></i> Following';
+                followBtn.classList.add('following');
+            }
+            
+            followBtn.addEventListener('click', function() {
+                const user = localStorage.getItem('currentUser');
+                if (!user) {
+                    alert('Please login to follow companies.');
+                    window.location.href = 'login.html?redirect=follow';
+                    return;
+                }
+                
+                const isFollowing = this.classList.contains('following');
+                
+                if (isFollowing) {
+                    this.innerHTML = '<i class="far fa-bookmark"></i> Follow Company';
+                    this.classList.remove('following');
+                    localStorage.setItem(`followCompany_${companyId}`, 'false');
+                    alert(`You unfollowed ${company.name}`);
+                } else {
+                    this.innerHTML = '<i class="fas fa-bookmark"></i> Following';
+                    this.classList.add('following');
+                    localStorage.setItem(`followCompany_${companyId}`, 'true');
+                    alert(`You are now following ${company.name}`);
+                }
+            });
+        }
+
+        // Apply for internship
+        function applyForInternship(internshipId, companyName) {
+            // Check if user is logged in
+            const user = localStorage.getItem('currentUser');
+            if (user) {
+                alert(`Applying for internship at ${companyName}... You will be redirected to application form.`);
+                // Track application
+                const applications = JSON.parse(localStorage.getItem('applications') || '[]');
+                applications.push({
+                    internshipId,
+                    company: companyName,
+                    date: new Date().toISOString(),
+                    status: "pending"
+                });
+                localStorage.setItem('applications', JSON.stringify(applications));
+            } else {
+                alert('Please login to apply for internships.');
+                window.location.href = 'login.html?redirect=apply';
+            }
+        }
+
+        // Image modal functions
+        function openModal(imageUrl) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            
+            modalImage.src = imageUrl;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Make functions globally available
+        window.applyForInternship = applyForInternship;
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+    </script>
+</body>
+</html>

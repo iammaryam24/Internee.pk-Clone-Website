@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Internee.pk</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Internee.pk Logo" class="logo-img">
+                    <span class="logo-text">INTERNEE<span class="logo-dot">.PK</span></span>
+                </a>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="dashboard.html" class="nav-link active"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li class="nav-item"><a href="internships.html" class="nav-link"><i class="fas fa-briefcase"></i> Internships</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-file-alt"></i> Applications</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-bell"></i> Notifications</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-user"></i> Profile</a></li>
+                </ul>
+                
+                <div class="nav-buttons">
+                    <div class="user-menu">
+                        <button class="user-btn">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="User" class="user-avatar">
+                            <span>Ahmed R.</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="user-dropdown">
+                            <a href="#"><i class="fas fa-user"></i> My Profile</a>
+                            <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                            <a href="#"><i class="fas fa-question-circle"></i> Help</a>
+                            <div class="divider"></div>
+                            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard -->
+    <section class="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <div class="welcome-section">
+                    <h1>Welcome back, <span class="highlight">Ahmed!</span></h1>
+                    <p>Here's what's happening with your internship applications</p>
+                </div>
+                <button class="btn btn-primary"><i class="fas fa-plus"></i> Complete Profile</button>
+            </div>
+            
+            <div class="dashboard-grid">
+                <!-- Stats Cards -->
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>12</h3>
+                            <p>Applications Sent</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #10B981 0%, #34D399 100%);">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>3</h3>
+                            <p>Under Review</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>5</h3>
+                            <p>Interviews</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>2</h3>
+                            <p>Offers</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Applications -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Recent Applications</h3>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    
+                    <div class="applications-list">
+                        <div class="application-item">
+                            <div class="application-info">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" class="company-logo">
+                                <div>
+                                    <h4>Software Engineering Intern</h4>
+                                    <p>Microsoft • Applied 2 days ago</p>
+                                </div>
+                            </div>
+                            <div class="application-status">
+                                <span class="status-badge status-review">Under Review</span>
+                            </div>
+                        </div>
+                        
+                        <div class="application-item">
+                            <div class="application-info">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" class="company-logo">
+                                <div>
+                                    <h4>AWS Cloud Intern</h4>
+                                    <p>Amazon • Applied 1 week ago</p>
+                                </div>
+                            </div>
+                            <div class="application-status">
+                                <span class="status-badge status-interview">Interview Scheduled</span>
+                            </div>
+                        </div>
+                        
+                        <div class="application-item">
+                            <div class="application-info">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Meta_Platforms_Inc._logo.svg" alt="Meta" class="company-logo">
+                                <div>
+                                    <h4>Frontend Developer Intern</h4>
+                                    <p>Meta • Applied 3 days ago</p>
+                                </div>
+                            </div>
+                            <div class="application-status">
+                                <span class="status-badge status-offer">Offer Received</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recommended Internships -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Recommended For You</h3>
+                        <a href="internships.html" class="view-all">View All</a>
+                    </div>
+                    
+                    <div class="recommendations">
+                        <div class="recommendation-item">
+                            <div class="company-info">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="company-logo">
+                                <div>
+                                    <h4>Machine Learning Intern</h4>
+                                    <p>Google • Remote</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-sm">Apply Now</button>
+                        </div>
+                        
+                        <div class="recommendation-item">
+                            <div class="company-info">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="company-logo">
+                                <div>
+                                    <h4>UI/UX Design Intern</h4>
+                                    <p>Netflix • On-site</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-sm">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Profile Completion -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Profile Completion</h3>
+                        <span class="completion-percent">75%</span>
+                    </div>
+                    
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 75%"></div>
+                    </div>
+                    
+                    <div class="profile-tasks">
+                        <div class="task">
+                            <i class="fas fa-check-circle completed"></i>
+                            <span>Basic Information</span>
+                        </div>
+                        <div class="task">
+                            <i class="fas fa-check-circle completed"></i>
+                            <span>Education</span>
+                        </div>
+                        <div class="task">
+                            <i class="fas fa-check-circle completed"></i>
+                            <span>Skills</span>
+                        </div>
+                        <div class="task">
+                            <i class="fas fa-circle"></i>
+                            <span>Portfolio</span>
+                        </div>
+                        <div class="task">
+                            <i class="fas fa-circle"></i>
+                            <span>Resume Upload</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Upcoming Interviews -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Upcoming Interviews</h3>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    
+                    <div class="interviews-list">
+                        <div class="interview-item">
+                            <div class="interview-date">
+                                <div class="date">15</div>
+                                <div class="month">Mar</div>
+                            </div>
+                            <div class="interview-details">
+                                <h4>Microsoft - Technical Round</h4>
+                                <p><i class="fas fa-clock"></i> 2:00 PM - 3:00 PM</p>
+                                <p><i class="fas fa-video"></i> Google Meet</p>
+                            </div>
+                        </div>
+                        
+                        <div class="interview-item">
+                            <div class="interview-date">
+                                <div class="date">18</div>
+                                <div class="month">Mar</div>
+                            </div>
+                            <div class="interview-details">
+                                <h4>Amazon - HR Interview</h4>
+                                <p><i class="fas fa-clock"></i> 11:00 AM - 12:00 PM</p>
+                                <p><i class="fas fa-phone"></i> Phone Call</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <a href="index.html" class="logo footer-logo">
+                        <img src="images/logo.png" alt="Internee.pk Logo" class="logo-img">
+                        <span class="logo-text">INTERNEE<span class="logo-dot">.PK</span></span>
+                    </a>
+                    <p class="footer-description">Pakistan's leading platform connecting students with internship opportunities at top companies.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="internships.html">Internships</a></li>
+                        <li><a href="#">Applications</a></li>
+                        <li><a href="#">Profile</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Resume Builder</a></li>
+                        <li><a href="#">Interview Tips</a></li>
+                        <li><a href="#">Career Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Internee.pk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
