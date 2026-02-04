@@ -44,4 +44,5 @@ A complete, fully functional clone of the INTERNEE.PK website built with modern 
 - **SEO Optimized** HTML structure
 - **Accessibility** compliant markup
 
-## 📁 Complete File Structure
+
+
